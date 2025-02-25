@@ -17,4 +17,6 @@
     <string name="enter_your_name">Enter Your Name</string>
     <string name="email_address">Email Address</string>
     <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="already_registered">Already Registered ?</string>
 </resources>
