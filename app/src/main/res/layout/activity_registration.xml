@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#CCCCCC"
 
-        android:drawableLeft="@drawable/baseline_account_circle_24"
+        android:drawableLeft="@drawable/baseline_email_24"
         android:drawablePadding="13dp"
         android:hint="@string/email_address"
         android:textColorHint="@color/white"
@@ -80,7 +80,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#CCCCCC"
-        android:drawableLeft="@drawable/baseline_account_circle_24"
+        android:drawableLeft="@drawable/baseline_key_24"
 
         android:drawablePadding="13dp"
         android:hint="@string/password"
