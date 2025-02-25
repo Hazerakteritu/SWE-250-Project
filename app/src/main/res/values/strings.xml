@@ -14,4 +14,7 @@
     <string name="my_restaurant_app">My Restaurant App</string>
     <string name="explore_your_favorite_food">Explore Your Favorite Food.</string>
     <string name="sign_in">Sign in</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
 </resources>
