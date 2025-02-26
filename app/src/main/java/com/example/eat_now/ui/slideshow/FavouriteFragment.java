@@ -1,25 +1,23 @@
-package com.example.eat_now.ui.home;
+package com.example.eat_now.ui.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.eat_now.databinding.FragmentHomeBinding;
+import com.example.eat_now.databinding.FragmentFavouriteBinding;
 
-public class HomeFragment extends Fragment {
+public class FavouriteFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentFavouriteBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentFavouriteBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;
