@@ -27,4 +27,6 @@
     <string name="hazerakteritu_gmail_com">hazerakteritu@gmail.com</string>
     <string name="hazera_ritu">Hazera Ritu</string>
     <string name="log_out">Log Out</string>
+    <string name="address">Address</string>
+    <string name="edit_your_location">Edit Your Location</string>
 </resources>
