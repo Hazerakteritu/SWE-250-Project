@@ -81,7 +81,7 @@
         app:layout_constraintWidth_percent=".8" />
 
     <Button
-        android:onClick="mainActivity"
+        android:onClick="login"
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't Have An Account ? "
+        android:text="@string/don_t_have_an_account"
         android:textAlignment="center"
         android:textColor="#FBFBFB"
         android:textStyle="bold"
