@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_daily_meal"
-        android:name="com.example.eat_now.ui.gallery.DailyMealFragment"
-        android:label="@string/daily_meal"
-        tools:layout="@layout/daily_meal_fragment" />
+        android:id="@+id/nav_view_profile"
+        android:name="com.example.eat_now.ui.gallery.ViewProfileFragment"
+        android:label="View Profile"
+        tools:layout="@layout/view_profile_fragment" />
 
     <fragment
         android:id="@+id/nav_favourite"

@@ -9,9 +9,9 @@
             android:icon="@drawable/baseline_home_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_daily_meal"
-            android:icon="@drawable/baseline_all_inclusive_24"
-            android:title="@string/daily_meal" />
+            android:id="@+id/nav_view_profile"
+            android:icon="@drawable/man"
+            android:title="@string/view_profile" />
         <item
             android:id="@+id/nav_favourite"
             android:icon="@drawable/baseline_favorite_24"
