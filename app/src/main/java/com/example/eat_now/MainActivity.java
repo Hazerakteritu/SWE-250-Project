@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
         //NavigationView navigationView = binding.navView;
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_view_profile, R.id.nav_favourite, R.id.nav_my_cart, R.id.nav_address)
                 .setOpenableLayout(drawer)
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }

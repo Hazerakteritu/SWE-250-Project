@@ -57,6 +57,7 @@
         android:drawableStart="@drawable/baseline_email_24"
         android:drawablePadding="13dp"
         android:hint="@string/email_address"
+        android:textColor="@color/material_dynamic_neutral80"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

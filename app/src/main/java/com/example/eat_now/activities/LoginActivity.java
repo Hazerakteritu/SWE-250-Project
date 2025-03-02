@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         emailEditText = findViewById(R.id.editText2);
         passwordEditText = findViewById(R.id.editText3);
-        // Check if the user is already logged in
+
 //        FirebaseUser currentUser = mAuth.getCurrentUser();
 //        if (currentUser != null) {
 //            mainActivity();
