@@ -1,11 +1,11 @@
 package com.example.eat_now.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.eat_now.R;
-import com.example.eat_now.adapters.CategoryAdapter;
 import com.example.eat_now.adapters.RestaurantAdapter;
-import com.example.eat_now.models.Category;
 import com.example.eat_now.models.Restaurant;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,14 +42,16 @@ public class HomeFragment extends Fragment {
     private List<Restaurant> filteredRestaurants;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
     private String currentCategory = "All";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Initialize Firebase Auth
+        // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         // Initialize views
         greetingText = root.findViewById(R.id.greeting_text);
@@ -76,8 +78,8 @@ public class HomeFragment extends Fragment {
         // Set up category chips
         setupCategoryChips(root);
 
-        // Load restaurants
-        loadRestaurants();
+        // Load restaurants from Firestore
+        loadRestaurantsFromFirestore();
 
         return root;
     }
@@ -115,8 +117,8 @@ public class HomeFragment extends Fragment {
         categoryChipGroup = root.findViewById(R.id.category_chip_group);
 
         // Define categories
-        String[] categories = {"All", "Fast Food", "Chicken", "Beef", "Seafood", "Vegetarian",
-                "Breakfast", "Sandwich", "Dessert", "Soup", "Bakery"};
+        String[] categories = {"All", "Fast Food", "Bangladeshi", "Italian", "Indian", "Japanese",
+                "Pizza", "Burger", "Dessert", "Biryani", "Seafood"};
 
         // Add chips programmatically
         for (String category : categories) {
@@ -139,73 +141,37 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void loadRestaurants() {
-        // Clear existing lists
-        allRestaurants.clear();
-        popularRestaurants.clear();
+    private void loadRestaurantsFromFirestore() {
+        db.collection("restaurants")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    allRestaurants.clear();
+                    popularRestaurants.clear();
 
-        // Add sample restaurants
-        allRestaurants.add(new Restaurant("1", "Sylhet Biryani House",
-                "https://example.com/biryani_house.jpg", "Zindabazar, Sylhet",
-                "Famous for traditional Sylheti biryani", 4.8, 30, 40.0,
-                24.8949, 91.8687, new ArrayList<String>() {{
-            add("Bangladeshi");
-            add("Biryani");
-        }}, true));
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        Restaurant restaurant = document.toObject(Restaurant.class);
+                        restaurant.setId(document.getId());
+                        allRestaurants.add(restaurant);
 
-        allRestaurants.add(new Restaurant("2", "Pizza Planet",
-                "https://example.com/pizza_planet.jpg", "Uposhohor, Sylhet",
-                "Best pizza in town", 4.7, 35, 50.0,
-                24.9032, 91.8603, new ArrayList<String>() {{
-            add("Italian");
-            add("Pizza");
-        }}, true));
+                        // Add to popular restaurants if rating >= 4.5
+                        if (restaurant.getRating() >= 4.5) {
+                            popularRestaurants.add(restaurant);
+                        }
+                    }
 
-        allRestaurants.add(new Restaurant("3", "Campus Burger",
-                "https://example.com/campus_burger.jpg", "University Road, Sylhet",
-                "Student favorite burger joint", 4.5, 25, 30.0,
-                24.9176, 91.8328, new ArrayList<String>() {{
-            add("Fast Food");
-            add("Burger");
-        }}, true));
+                    // Update adapters
+                    popularRestaurantsAdapter.notifyDataSetChanged();
 
-        allRestaurants.add(new Restaurant("4", "Tandoori Express",
-                "https://example.com/tandoori_express.jpg", "Amberkhana, Sylhet",
-                "Authentic tandoori dishes", 4.6, 40, 45.0,
-                24.9011, 91.8712, new ArrayList<String>() {{
-            add("Indian");
-            add("Tandoori");
-        }}, true));
+                    // Initial filtering (show all)
+                    filterRestaurants();
 
-        allRestaurants.add(new Restaurant("5", "Sylhet Chinese Corner",
-                "https://example.com/chinese_corner.jpg", "Zindabazar, Sylhet",
-                "Best Chinese food in Sylhet", 4.3, 25, 35.0,
-                24.8949, 91.8687, new ArrayList<String>() {{
-            add("Chinese");
-        }}, true));
-
-        allRestaurants.add(new Restaurant("6", "Cafe Campus",
-                "https://example.com/cafe_campus.jpg", "University Road, Sylhet",
-                "Cozy cafe near university", 4.4, 20, 25.0,
-                24.9176, 91.8328, new ArrayList<String>() {{
-            add("Cafe");
-            add("Dessert");
-        }}, true));
-
-        // Add more restaurants as needed
-
-        // Select popular restaurants (those with rating >= 4.5)
-        for (Restaurant restaurant : allRestaurants) {
-            if (restaurant.getRating() >= 4.5) {
-                popularRestaurants.add(restaurant);
-            }
-        }
-
-        // Update adapters
-        popularRestaurantsAdapter.notifyDataSetChanged();
-
-        // Initial filtering (show all)
-        filterRestaurants();
+                    if (allRestaurants.isEmpty()) {
+                        Toast.makeText(getContext(), "No restaurants found. Please add sample data.", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Error loading restaurants: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 
     private void filterRestaurants() {
@@ -240,6 +206,6 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // Refresh data when fragment becomes visible
-        loadRestaurants();
+        loadRestaurantsFromFirestore();
     }
 }

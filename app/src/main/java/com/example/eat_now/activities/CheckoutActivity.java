@@ -24,7 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class CheckoutActivity extends AppCompatActivity implements CartAdapter.CartItemListener {
@@ -47,6 +49,13 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.C
         // Initialize Firebase
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        // Check if user is authenticated
+        if (mAuth.getCurrentUser() == null) {
+            Toast.makeText(this, "Please login to place order", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
         // Initialize views
         cartRecyclerView = findViewById(R.id.checkout_cart_recycler_view);
@@ -92,9 +101,10 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.C
             double total = subtotal + deliveryFee;
 
             restaurantNameText.setText(restaurant.getName());
-            subtotalText.setText(String.format("$%.2f", subtotal));
-            deliveryFeeText.setText(String.format("$%.2f", deliveryFee));
-            totalText.setText(String.format("$%.2f", total));
+            // Changed from $ to ৳ (Taka symbol)
+            subtotalText.setText(String.format("৳%.2f", subtotal));
+            deliveryFeeText.setText(String.format("৳%.2f", deliveryFee));
+            totalText.setText(String.format("৳%.2f", total));
         }
     }
 
@@ -122,7 +132,7 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.C
 
     private void placeOrder() {
         // Get current user ID
-        String userId = mAuth.getCurrentUser() != null ? mAuth.getCurrentUser().getUid() : "guest";
+        String userId = mAuth.getCurrentUser().getUid();
 
         // Get selected payment method
         int selectedId = paymentMethodGroup.getCheckedRadioButtonId();
@@ -139,30 +149,25 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.C
         List<CartItem> cartItems = cartManager.getCartItems();
         double totalAmount = cartManager.getCartTotal() + restaurant.getDeliveryFee();
 
-        // Create order object for Firestore
-        Order order = new Order(
-                orderId,
-                userId,
-                restaurant.getId(),
-                cartItems,
-                address,
-                new Date()
-        );
+        // Create order map for Firestore
+        Map<String, Object> orderData = new HashMap<>();
+        orderData.put("orderId", orderId);
+        orderData.put("userId", userId);
+        orderData.put("restaurantId", restaurant.getId());
+        orderData.put("restaurantName", restaurant.getName());
+        orderData.put("items", cartItems);
+        orderData.put("deliveryAddress", address);
+        orderData.put("phone", phone);
+        orderData.put("paymentMethod", paymentMethod);
+        orderData.put("totalAmount", totalAmount);
+        orderData.put("status", "Order Placed");
+        orderData.put("createdAt", new Date());
 
-        // Add additional fields
-        order.setStatus("Order Placed");
-
-        // Save order to Firestore
+        // Save order to Firestore with proper error handling
         db.collection("orders")
                 .document(orderId)
-                .set(order)
+                .set(orderData)
                 .addOnSuccessListener(aVoid -> {
-                    // Update order with phone number
-                    db.collection("orders").document(orderId)
-                            .update("phone", phone,
-                                    "deliveryAddress", address,
-                                    "paymentMethod", paymentMethod);
-
                     Toast.makeText(CheckoutActivity.this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
 
                     // Clear cart
@@ -175,7 +180,9 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.C
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(CheckoutActivity.this, "Failed to place order: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckoutActivity.this, "Failed to place order: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    // Log the error for debugging
+                    e.printStackTrace();
                 });
     }
 
