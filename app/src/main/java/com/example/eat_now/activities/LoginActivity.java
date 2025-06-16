@@ -2,9 +2,14 @@ package com.example.eat_now.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,7 +23,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private EditText emailEditText, passwordEditText;
-    private Button loginButton, registerButton;
+    private Button loginButton;
+    private TextView forgotPasswordText;
+    private ImageView passwordToggle;
+    private boolean isPasswordVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,19 +37,37 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         emailEditText = findViewById(R.id.editText2);
         passwordEditText = findViewById(R.id.editText3);
+        forgotPasswordText = findViewById(R.id.forgot_password_text);
+        passwordToggle = findViewById(R.id.password_toggle);
 
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if (currentUser != null) {
-//            mainActivity();
-//        }
+        // Set up forgot password click
+        forgotPasswordText.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+            startActivity(intent);
+        });
 
+        // Set up password toggle click
+        passwordToggle.setOnClickListener(v -> togglePasswordVisibility());
+    }
 
+    /**
+     * Toggle password visibility (show/hide)
+     */
+    private void togglePasswordVisibility() {
+        if (isPasswordVisible) {
+            // Hide password
+            passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            passwordToggle.setImageResource(R.drawable.ic_eye_off);
+            isPasswordVisible = false;
+        } else {
+            // Show password
+            passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            passwordToggle.setImageResource(R.drawable.ic_eye_on);
+            isPasswordVisible = true;
+        }
 
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
+        // Move cursor to end of text
+        passwordEditText.setSelection(passwordEditText.getText().length());
     }
 
     public void login(View view) {
@@ -59,13 +85,12 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         mainActivity();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "❌ Login failed! Check your email and password.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

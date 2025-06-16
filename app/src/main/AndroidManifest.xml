@@ -27,6 +27,12 @@
         <activity
             android:name=".activities.WelcomeActivity"
             android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
 
         <!-- Restaurant Activities -->
@@ -46,10 +52,11 @@
             android:name=".activities.OrderTrackingActivity"
             android:exported="false" />
 
-        <!-- Admin Activity -->
+        <!-- Admin Activity
         <activity
             android:name=".activities.AdminActivity"
             android:exported="false" />
+         -->
 
         <!-- Main Activity -->
         <activity
@@ -58,10 +65,7 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.EatNow.NoActionBar">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <meta-data
