@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:id="@+id/action_reset"
+        android:title="Reset Restaurants"
+        android:icon="@android:drawable/ic_menu_rotate"
         app:showAsAction="never" />
+
+    <!-- NEW - Simple image setting -->
+    <item
+        android:id="@+id/action_set_images"
+        android:title="Set All Images"
+        android:icon="@android:drawable/ic_menu_camera"
+        app:showAsAction="never" />
+
 </menu>

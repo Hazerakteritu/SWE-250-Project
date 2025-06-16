@@ -34,9 +34,9 @@ public class FirestoreUtil {
         return getRestaurantsCollection().whereEqualTo("featured", true);
     }
 
-    // Food items collection
+    // Food items collection - FIX THIS LINE
     public static CollectionReference getFoodItemsCollection() {
-        return db.collection("foodItems");
+        return db.collection("food_items");  // Changed from "foodItems" to "food_items"
     }
 
     public static Query getFoodItemsByRestaurant(String restaurantId) {

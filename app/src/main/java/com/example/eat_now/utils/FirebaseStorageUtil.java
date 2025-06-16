@@ -66,12 +66,20 @@ public class FirebaseStorageUtil {
             if (task.isSuccessful()) {
                 Uri downloadUri = task.getResult();
                 String downloadUrl = downloadUri.toString();
-                Log.d(TAG, "Image upload successful. URL: " + downloadUrl);
+                Log.d(TAG, "✅ Image upload successful. URL: " + downloadUrl);
                 listener.onSuccess(downloadUrl);
             } else {
-                Log.e(TAG, "Image upload failed", task.getException());
-                listener.onFailure(task.getException());
+                Exception e = task.getException();
+                if (e != null && e.getMessage() != null && e.getMessage().contains("Object does not exist")) {
+                    Log.e(TAG, "❌ Object does not exist at location. Possible reasons: bad path or upload failed.");
+                    Toast.makeText(context, "❌ Error: Image not found in storage.", Toast.LENGTH_LONG).show();
+                } else {
+                    Log.e(TAG, "❌ Upload failed: " + e.getMessage());
+                    Toast.makeText(context, "❌ Upload failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                listener.onFailure(e);
             }
         });
+
     }
 }

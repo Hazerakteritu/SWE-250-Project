@@ -2,13 +2,16 @@ package com.example.eat_now;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.eat_now.activities.LoginActivity;
 import com.example.eat_now.utils.CartManager;
+import com.example.eat_now.utils.RestaurantFirestoreUtil;
+import com.example.eat_now.utils.SimpleImageManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        // Set up the logout button
         Button logoutButton = navigationView.findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(v -> logout());
 
@@ -52,13 +53,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logout() {
-        // Sign out from Firebase
         mAuth.signOut();
-
-        // Clear cart
         CartManager.getInstance().clearCart();
-
-        // Redirect to login activity
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -69,6 +65,40 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_reset) {
+            // Reset restaurants
+            new AlertDialog.Builder(this)
+                    .setTitle("Reset Restaurants")
+                    .setMessage("This will add new Sylhet restaurants. Continue?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        RestaurantFirestoreUtil.addSampleData(this);
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
+            return true;
+        }
+
+        // NEW - Simple image setting
+        if (id == R.id.action_set_images) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Set Images")
+                    .setMessage("This will set fixed images for all restaurants and food items. Continue?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        // Set all images at once - SUPER SIMPLE!
+                        SimpleImageManager.setAllImages(this);
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

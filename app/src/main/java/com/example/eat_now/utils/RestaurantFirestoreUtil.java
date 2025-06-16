@@ -53,12 +53,12 @@ public class RestaurantFirestoreUtil {
                 .get();
     }
 
-    // Add sample data - 6 UNIQUE restaurants with 5 food items each
+    // Add sample data - 6 UNIQUE Sylhet restaurants with 5 food items each
     public static void addSampleData(Context context) {
         // First clear existing data
         clearExistingData(context, () -> {
             try {
-                // Add sample restaurants - EXACTLY 6 UNIQUE RESTAURANTS
+                // Add sample restaurants - EXACTLY 6 UNIQUE SYLHET RESTAURANTS
                 List<Restaurant> restaurants = createSampleRestaurants();
 
                 for (Restaurant restaurant : restaurants) {
@@ -91,7 +91,7 @@ public class RestaurantFirestoreUtil {
                 }
 
                 if (context != null) {
-                    Toast.makeText(context, "Adding 6 unique restaurants...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Adding 6 Sylhet restaurants...", Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Error in addSampleData: " + e.getMessage(), e);
@@ -154,111 +154,111 @@ public class RestaurantFirestoreUtil {
         }
     }
 
-    // Create sample restaurants - EXACTLY 6 UNIQUE RESTAURANTS
+    // Create sample restaurants - EXACTLY 6 UNIQUE SYLHET RESTAURANTS
     private static List<Restaurant> createSampleRestaurants() {
         List<Restaurant> restaurants = new ArrayList<>();
 
-        // Restaurant 1: Biryani House
-        Restaurant biryaniHouse = new Restaurant(
+        // Restaurant 1: Kacchi Bhai Ambarkhana
+        Restaurant kacchiBhai = new Restaurant(
                 "restaurant1",
-                "Sylhet Biryani House",
-                "", // No image URL
-                "Zindabazar, Sylhet",
-                "Famous for traditional Sylheti biryani",
+                "Kacchi Bhai Ambarkhana",
+                "", // Image URL - can be updated later
+                "Ambarkhana, Sylhet",
+                "Famous for authentic Sylheti kacchi biryani and traditional dishes",
                 4.8,
-                30,
-                40.0,
+                35,
+                45.0,
                 24.8949,
                 91.8687,
-                new ArrayList<>(Arrays.asList("Bangladeshi", "Biryani")),
+                new ArrayList<>(Arrays.asList("Bangladeshi", "Biryani", "Traditional")),
                 true
         );
-        restaurants.add(biryaniHouse);
+        restaurants.add(kacchiBhai);
 
-        // Restaurant 2: Pizza Planet
-        Restaurant pizzaPlanet = new Restaurant(
+        // Restaurant 2: Tasty Treat Sylhet
+        Restaurant tastyTreat = new Restaurant(
                 "restaurant2",
-                "Pizza Planet",
-                "", // No image URL
-                "Uposhohor, Sylhet",
-                "Best pizza in town",
-                4.7,
-                35,
-                50.0,
+                "Tasty Treat Sylhet",
+                "", // Image URL - can be updated later
+                "Zindabazar, Sylhet",
+                "Popular fast food chain with delicious snacks and meals",
+                4.6,
+                25,
+                35.0,
                 24.9032,
                 91.8603,
-                new ArrayList<>(Arrays.asList("Italian", "Pizza")),
+                new ArrayList<>(Arrays.asList("Fast Food", "Snacks", "Burger")),
                 true
         );
-        restaurants.add(pizzaPlanet);
+        restaurants.add(tastyTreat);
 
-        // Restaurant 3: Campus Burger
-        Restaurant campusBurger = new Restaurant(
+        // Restaurant 3: 5 Bhai Restaurant Sylhet
+        Restaurant fiveBhai = new Restaurant(
                 "restaurant3",
-                "Campus Burger",
-                "", // No image URL
-                "University Road, Sylhet",
-                "Student favorite burger joint",
-                4.5,
-                25,
-                30.0,
+                "5 Bhai Restaurant Sylhet",
+                "", // Image URL - can be updated later
+                "Bondor Bazar, Sylhet",
+                "Traditional Bangladeshi cuisine with family recipes",
+                4.7,
+                40,
+                40.0,
                 24.9176,
                 91.8328,
-                new ArrayList<>(Arrays.asList("Fast Food", "Burger")),
+                new ArrayList<>(Arrays.asList("Bangladeshi", "Traditional", "Curry")),
                 true
         );
-        restaurants.add(campusBurger);
+        restaurants.add(fiveBhai);
 
-        // Restaurant 4: Spice Garden
-        Restaurant spiceGarden = new Restaurant(
+        // Restaurant 4: Panshi Sylhet
+        Restaurant panshi = new Restaurant(
                 "restaurant4",
-                "Spice Garden",
-                "", // No image URL
-                "Amberkhana, Sylhet",
-                "Authentic Indian cuisine",
-                4.6,
-                40,
-                45.0,
+                "Panshi Sylhet",
+                "", // Image URL - can be updated later
+                "Uposhohor, Sylhet",
+                "Authentic Sylheti cuisine with fresh ingredients",
+                4.9,
+                30,
+                50.0,
                 24.9012,
                 91.8701,
-                new ArrayList<>(Arrays.asList("Indian", "Vegetarian")),
+                new ArrayList<>(Arrays.asList("Bangladeshi", "Sylheti", "Traditional")),
                 true
         );
-        restaurants.add(spiceGarden);
+        restaurants.add(panshi);
 
-        // Restaurant 5: Sushi Express
-        Restaurant sushiExpress = new Restaurant(
+        // Restaurant 5: Pizza Hub Sylhet
+        Restaurant pizzaHub = new Restaurant(
                 "restaurant5",
-                "Sushi Express",
-                "", // No image URL
+                "Pizza Hub Sylhet",
+                "", // Image URL - can be updated later
                 "Dargah Gate, Sylhet",
-                "Fresh Japanese cuisine",
-                4.9,
-                45,
-                60.0,
+                "Best pizza place in Sylhet with Italian and fusion flavors",
+                4.5,
+                30,
+                55.0,
                 24.8998,
                 91.8712,
-                new ArrayList<>(Arrays.asList("Japanese", "Seafood")),
+                new ArrayList<>(Arrays.asList("Italian", "Pizza", "Fast Food")),
                 true
         );
-        restaurants.add(sushiExpress);
+        restaurants.add(pizzaHub);
 
-        // Restaurant 6: Dessert Paradise (ADDED 6TH RESTAURANT)
-        Restaurant dessertParadise = new Restaurant(
+        // Restaurant 6: Bonoful Sweets Sylhet
+        Restaurant bonofulSweets = new Restaurant(
                 "restaurant6",
-                "Dessert Paradise",
-                "", // No image URL
-                "Bondor Bazar, Sylhet",
-                "Sweet treats and desserts",
-                4.7,
+                "Bonoful Sweets Sylhet",
+                "", // Image URL - can be updated later
+                "Chowhatta, Sylhet",
+                "Traditional Bengali sweets and desserts since 1985",
+                4.8,
                 20,
                 25.0,
                 24.9045,
                 91.8675,
-                new ArrayList<>(Arrays.asList("Dessert", "Bakery")),
+                new ArrayList<>(Arrays.asList("Dessert", "Sweets", "Traditional")),
                 true
         );
-        restaurants.add(dessertParadise);
+        restaurants.add(bonofulSweets);
 
         return restaurants;
     }
@@ -269,52 +269,52 @@ public class RestaurantFirestoreUtil {
 
         // Different food items based on restaurant type
         if (restaurantId.equals("restaurant1")) {
-            // Biryani House - Bangladeshi food
-            foodItems.add(new FoodItem("food1_" + restaurantId, "Kacchi Biryani", "Aromatic rice with tender meat", "", 12.99, restaurantId, "Main Course"));
-            foodItems.add(new FoodItem("food2_" + restaurantId, "Chicken Curry", "Spicy chicken curry", "", 9.99, restaurantId, "Main Course"));
-            foodItems.add(new FoodItem("food3_" + restaurantId, "Beef Tehari", "Flavorful beef rice dish", "", 11.99, restaurantId, "Main Course"));
-            foodItems.add(new FoodItem("food4_" + restaurantId, "Borhani", "Yogurt-based spicy drink", "", 3.99, restaurantId, "Beverage"));
-            foodItems.add(new FoodItem("food5_" + restaurantId, "Jorda", "Sweet rice dessert", "", 4.99, restaurantId, "Dessert"));
+            // Kacchi Bhai Ambarkhana - Traditional Bangladeshi
+            foodItems.add(new FoodItem("food1_" + restaurantId, "Kacchi Biryani", "Authentic Sylheti kacchi biryani with tender mutton", "", 15.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food2_" + restaurantId, "Beef Rezala", "Traditional beef curry with rich gravy", "", 12.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food3_" + restaurantId, "Chicken Roast", "Spicy roasted chicken Sylheti style", "", 10.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food4_" + restaurantId, "Borhani", "Traditional yogurt drink with spices", "", 3.99, restaurantId, "Beverage"));
+            foodItems.add(new FoodItem("food5_" + restaurantId, "Firni", "Creamy rice pudding dessert", "", 4.99, restaurantId, "Dessert"));
         }
         else if (restaurantId.equals("restaurant2")) {
-            // Pizza Planet - Italian food
-            foodItems.add(new FoodItem("food1_" + restaurantId, "Margherita Pizza", "Classic cheese and tomato", "", 10.99, restaurantId, "Pizza"));
-            foodItems.add(new FoodItem("food2_" + restaurantId, "Pepperoni Pizza", "Spicy pepperoni topping", "", 12.99, restaurantId, "Pizza"));
-            foodItems.add(new FoodItem("food3_" + restaurantId, "Garlic Bread", "Crispy bread with garlic butter", "", 4.99, restaurantId, "Sides"));
-            foodItems.add(new FoodItem("food4_" + restaurantId, "Pasta Carbonara", "Creamy pasta with bacon", "", 9.99, restaurantId, "Pasta"));
-            foodItems.add(new FoodItem("food5_" + restaurantId, "Tiramisu", "Coffee-flavored dessert", "", 5.99, restaurantId, "Dessert"));
-        }
-        else if (restaurantId.equals("restaurant3")) {
-            // Campus Burger - Fast food
-            foodItems.add(new FoodItem("food1_" + restaurantId, "Classic Burger", "Beef patty with lettuce and tomato", "", 6.99, restaurantId, "Burger"));
-            foodItems.add(new FoodItem("food2_" + restaurantId, "Cheese Burger", "Classic burger with cheese", "", 7.99, restaurantId, "Burger"));
-            foodItems.add(new FoodItem("food3_" + restaurantId, "French Fries", "Crispy golden fries", "", 3.99, restaurantId, "Sides"));
-            foodItems.add(new FoodItem("food4_" + restaurantId, "Chicken Wings", "Spicy buffalo wings", "", 8.99, restaurantId, "Appetizer"));
+            // Tasty Treat Sylhet - Fast Food
+            foodItems.add(new FoodItem("food1_" + restaurantId, "Chicken Burger", "Crispy chicken burger with special sauce", "", 8.99, restaurantId, "Burger"));
+            foodItems.add(new FoodItem("food2_" + restaurantId, "Beef Burger", "Juicy beef patty with fresh vegetables", "", 9.99, restaurantId, "Burger"));
+            foodItems.add(new FoodItem("food3_" + restaurantId, "Chicken Wings", "Spicy buffalo chicken wings", "", 7.99, restaurantId, "Snacks"));
+            foodItems.add(new FoodItem("food4_" + restaurantId, "French Fries", "Golden crispy potato fries", "", 3.99, restaurantId, "Sides"));
             foodItems.add(new FoodItem("food5_" + restaurantId, "Chocolate Shake", "Rich chocolate milkshake", "", 4.99, restaurantId, "Beverage"));
         }
+        else if (restaurantId.equals("restaurant3")) {
+            // 5 Bhai Restaurant - Traditional Bangladeshi
+            foodItems.add(new FoodItem("food1_" + restaurantId, "Hilsa Fish Curry", "Fresh hilsa fish in traditional curry", "", 14.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food2_" + restaurantId, "Mutton Curry", "Tender mutton in spicy gravy", "", 13.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food3_" + restaurantId, "Dal Gosht", "Lentils cooked with meat", "", 11.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food4_" + restaurantId, "Plain Rice", "Steamed basmati rice", "", 2.99, restaurantId, "Sides"));
+            foodItems.add(new FoodItem("food5_" + restaurantId, "Mixed Vegetables", "Seasonal vegetables curry", "", 6.99, restaurantId, "Vegetarian"));
+        }
         else if (restaurantId.equals("restaurant4")) {
-            // Spice Garden - Indian food
-            foodItems.add(new FoodItem("food1_" + restaurantId, "Butter Chicken", "Creamy tomato chicken curry", "", 11.99, restaurantId, "Main Course"));
-            foodItems.add(new FoodItem("food2_" + restaurantId, "Vegetable Biryani", "Spiced rice with vegetables", "", 9.99, restaurantId, "Main Course"));
-            foodItems.add(new FoodItem("food3_" + restaurantId, "Garlic Naan", "Flatbread with garlic", "", 2.99, restaurantId, "Bread"));
-            foodItems.add(new FoodItem("food4_" + restaurantId, "Paneer Tikka", "Grilled cottage cheese", "", 8.99, restaurantId, "Appetizer"));
-            foodItems.add(new FoodItem("food5_" + restaurantId, "Gulab Jamun", "Sweet milk dumplings", "", 4.99, restaurantId, "Dessert"));
+            // Panshi Sylhet - Authentic Sylheti
+            foodItems.add(new FoodItem("food1_" + restaurantId, "Shatkora Beef", "Beef curry with citrus shatkora", "", 16.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food2_" + restaurantId, "Shutki Bhorta", "Dried fish mash Sylheti style", "", 8.99, restaurantId, "Traditional"));
+            foodItems.add(new FoodItem("food3_" + restaurantId, "Duck Curry", "Traditional duck curry", "", 15.99, restaurantId, "Main Course"));
+            foodItems.add(new FoodItem("food4_" + restaurantId, "Panta Bhat", "Fermented rice with accompaniments", "", 7.99, restaurantId, "Traditional"));
+            foodItems.add(new FoodItem("food5_" + restaurantId, "Seven Color Tea", "Famous Sylheti layered tea", "", 2.99, restaurantId, "Beverage"));
         }
         else if (restaurantId.equals("restaurant5")) {
-            // Sushi Express - Japanese food
-            foodItems.add(new FoodItem("food1_" + restaurantId, "California Roll", "Crab, avocado and cucumber roll", "", 8.99, restaurantId, "Sushi"));
-            foodItems.add(new FoodItem("food2_" + restaurantId, "Salmon Nigiri", "Fresh salmon over rice", "", 9.99, restaurantId, "Sushi"));
-            foodItems.add(new FoodItem("food3_" + restaurantId, "Miso Soup", "Traditional Japanese soup", "", 3.99, restaurantId, "Soup"));
-            foodItems.add(new FoodItem("food4_" + restaurantId, "Chicken Teriyaki", "Grilled chicken with teriyaki sauce", "", 12.99, restaurantId, "Main Course"));
-            foodItems.add(new FoodItem("food5_" + restaurantId, "Green Tea Ice Cream", "Refreshing green tea dessert", "", 4.99, restaurantId, "Dessert"));
+            // Pizza Hub Sylhet - Italian/Pizza
+            foodItems.add(new FoodItem("food1_" + restaurantId, "Margherita Pizza", "Classic tomato and mozzarella pizza", "", 12.99, restaurantId, "Pizza"));
+            foodItems.add(new FoodItem("food2_" + restaurantId, "Chicken Supreme", "Chicken pizza with vegetables", "", 15.99, restaurantId, "Pizza"));
+            foodItems.add(new FoodItem("food3_" + restaurantId, "Beef Pepperoni", "Spicy pepperoni pizza", "", 14.99, restaurantId, "Pizza"));
+            foodItems.add(new FoodItem("food4_" + restaurantId, "Garlic Bread", "Crispy bread with garlic butter", "", 4.99, restaurantId, "Sides"));
+            foodItems.add(new FoodItem("food5_" + restaurantId, "Pasta Alfredo", "Creamy white sauce pasta", "", 10.99, restaurantId, "Pasta"));
         }
         else if (restaurantId.equals("restaurant6")) {
-            // Dessert Paradise - Desserts
-            foodItems.add(new FoodItem("food1_" + restaurantId, "Chocolate Cake", "Rich chocolate layer cake", "", 5.99, restaurantId, "Cake"));
-            foodItems.add(new FoodItem("food2_" + restaurantId, "Cheesecake", "Creamy New York style cheesecake", "", 6.99, restaurantId, "Cake"));
-            foodItems.add(new FoodItem("food3_" + restaurantId, "Ice Cream Sundae", "Vanilla ice cream with toppings", "", 4.99, restaurantId, "Ice Cream"));
-            foodItems.add(new FoodItem("food4_" + restaurantId, "Apple Pie", "Traditional apple pie with cinnamon", "", 5.99, restaurantId, "Pie"));
-            foodItems.add(new FoodItem("food5_" + restaurantId, "Coffee", "Freshly brewed coffee", "", 2.99, restaurantId, "Beverage"));
+            // Bonoful Sweets - Traditional Sweets
+            foodItems.add(new FoodItem("food1_" + restaurantId, "Rasgulla", "Soft cottage cheese balls in syrup", "", 5.99, restaurantId, "Sweets"));
+            foodItems.add(new FoodItem("food2_" + restaurantId, "Sandesh", "Traditional Bengali sweet", "", 6.99, restaurantId, "Sweets"));
+            foodItems.add(new FoodItem("food3_" + restaurantId, "Mishti Doi", "Sweet yogurt dessert", "", 4.99, restaurantId, "Dessert"));
+            foodItems.add(new FoodItem("food4_" + restaurantId, "Chomchom", "Cylindrical sweet in syrup", "", 5.99, restaurantId, "Sweets"));
+            foodItems.add(new FoodItem("food5_" + restaurantId, "Kalojam", "Dark sweet balls in syrup", "", 5.99, restaurantId, "Sweets"));
         }
         else {
             // Default food items if restaurant ID doesn't match
@@ -326,5 +326,33 @@ public class RestaurantFirestoreUtil {
         }
 
         return foodItems;
+    }
+
+    /**
+     * Update restaurant image URL
+     * @param restaurantId The restaurant ID
+     * @param imageUrl The new image URL from Firebase Storage
+     * @param context Context for showing toast messages
+     */
+    public static void updateRestaurantImage(String restaurantId, String imageUrl, Context context) {
+        if (restaurantId == null || restaurantId.isEmpty()) {
+            Log.e(TAG, "updateRestaurantImage: restaurantId is null or empty");
+            return;
+        }
+
+        FirestoreUtil.getRestaurantDocument(restaurantId)
+                .update("imageUrl", imageUrl)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "Restaurant image updated successfully");
+                    if (context != null) {
+                        Toast.makeText(context, "Restaurant image updated!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error updating restaurant image: " + e.getMessage());
+                    if (context != null) {
+                        Toast.makeText(context, "Error updating image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
