@@ -217,15 +217,21 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             }
         });
 
-        // Update cart FAB visibility based on cart contents
+        // FIXED: Always show cart FAB - no matter if cart is empty or not
         updateCartFab();
     }
 
     private void updateCartFab() {
+        // ALWAYS VISIBLE - This is what you wanted!
+        cartFab.setVisibility(View.VISIBLE);
+
+        // Optional: Change the appearance based on cart status
         if (cartManager.isEmpty()) {
-            cartFab.setVisibility(View.GONE);
+            // Cart is empty - maybe show a different icon or color
+            cartFab.setImageResource(R.drawable.ic_shopping_cart);
         } else {
-            cartFab.setVisibility(View.VISIBLE);
+            // Cart has items - show normal cart icon
+            cartFab.setImageResource(R.drawable.ic_shopping_cart);
         }
     }
 

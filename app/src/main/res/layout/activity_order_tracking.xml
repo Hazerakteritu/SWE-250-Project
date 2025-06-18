@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,14 +14,14 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="#FFFFFF"
             android:elevation="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Your Orders"
-                android:textColor="@color/black"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
         </androidx.appcompat.widget.Toolbar>
@@ -37,8 +37,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
+                <!-- Order Header -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,18 +50,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
+                        android:text="Order #12345"
+                        android:textColor="#000000"
                         android:textSize="16sp"
                         android:fontFamily="monospace"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/status_badge_background"
+                        android:background="#4CAF50"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="4dp"
                         android:text="Order Placed"
-                        android:textColor="@color/white"/>
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
                 <TextView
@@ -68,120 +70,77 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/grey_600"
+                    android:text="Dec 16, 2024 at 02:30 PM"
+                    android:textColor="#666666"
                     android:textSize="14sp"/>
 
+                <!-- Restaurant Name -->
+                <TextView
+                    android:id="@+id/restaurant_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="🏪 Restaurant Name"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <!-- Order Progress -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="30dp"
                     android:text="Order Progress"
-                    android:textColor="@color/black"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal"
                     android:weightSum="4">
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/status_placed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="✅ Placed"
+                        android:textColor="#4CAF50"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
 
-                        <ImageView
-                            android:id="@+id/status_placed_icon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_order_placed"
-                            app:tint="@color/grey_600"/>
-
-                        <TextView
-                            android:id="@+id/status_placed"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Order Placed"
-                            android:textColor="@color/grey_600"
-                            android:textSize="12sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/status_preparing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="🍳 Preparing"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
 
-                        <ImageView
-                            android:id="@+id/status_preparing_icon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_preparing"
-                            app:tint="@color/grey_600"/>
-
-                        <TextView
-                            android:id="@+id/status_preparing"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Preparing"
-                            android:textColor="@color/grey_600"
-                            android:textSize="12sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/status_on_way"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="🚗 On Way"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
 
-                        <ImageView
-                            android:id="@+id/status_on_way_icon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_delivery"
-                            app:tint="@color/grey_600"/>
-
-                        <TextView
-                            android:id="@+id/status_on_way"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="On the Way"
-                            android:textColor="@color/grey_600"
-                            android:textSize="12sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/status_delivered"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/status_delivered_icon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_delivered"
-                            app:tint="@color/grey_600"/>
-
-                        <TextView
-                            android:id="@+id/status_delivered"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Delivered"
-                            android:textColor="@color/grey_600"
-                            android:textSize="12sp"/>
-                    </LinearLayout>
+                        android:text="📦 Delivered"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
                 </LinearLayout>
 
                 <ProgressBar
@@ -189,97 +148,117 @@
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
-                    android:layout_marginTop="16dp"
-                    android:progressDrawable="@drawable/progress_bar_horizontal"/>
+                    android:layout_marginTop="20dp"
+                    android:progress="25"/>
 
+                <!-- Simple Order Summary - NO GREEN BOX -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:background="#FAFAFA"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="💰 Order Summary"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Subtotal -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Subtotal"
+                            android:textColor="#666666"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/subtotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="৳340.00"
+                            android:textColor="#000000"
+                            android:textSize="16sp"/>
+                    </LinearLayout>
+
+                    <!-- Delivery Fee -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Delivery Fee"
+                            android:textColor="#666666"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/delivery_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="৳50.00"
+                            android:textColor="#000000"
+                            android:textSize="16sp"/>
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DDDDDD"
+                        android:layout_marginVertical="8dp"/>
+
+                    <!-- Total - SIMPLE, NO GREEN BOX -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Total"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="৳390.00"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Delivery Information -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Order Items"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/order_items_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginVertical="16dp"
-                    android:background="@color/grey_200"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Subtotal"
-                        android:textColor="@color/grey_600"/>
-
-                    <TextView
-                        android:id="@+id/subtotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Delivery Fee"
-                        android:textColor="@color/grey_600"/>
-
-                    <TextView
-                        android:id="@+id/delivery_fee"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Total"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/total"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="30dp"
                     android:text="Delivery Information"
-                    android:textColor="@color/black"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -288,27 +267,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:drawableStart="@drawable/ic_location"
-                    android:drawablePadding="8dp"
-                    android:textColor="@color/black"/>
+                    android:text="📍 Varsity Gate, Akhalia, Sylhet"
+                    android:textColor="#000000"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/delivery_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:drawableStart="@drawable/ic_phone"
-                    android:drawablePadding="8dp"
-                    android:textColor="@color/black"/>
+                    android:text="📞 +8801620129229"
+                    android:textColor="#000000"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/payment_method"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="💳 Cash on Delivery"
+                    android:textColor="#000000"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/ordered_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:drawableStart="@drawable/ic_time"
-                    android:drawablePadding="8dp"
-                    android:textColor="@color/black"/>
+                    android:text="🕐 Ordered: Dec 16, 2024 at 02:30 PM"
+                    android:textColor="#000000"
+                    android:textSize="16sp"/>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

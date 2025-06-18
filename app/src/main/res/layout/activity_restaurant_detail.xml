@@ -154,7 +154,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Added the missing FloatingActionButton -->
+    <!-- FIXED: Cart FAB now always visible -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cart_fab"
         android:layout_width="wrap_content"
@@ -162,7 +162,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_shopping_cart"
-        android:visibility="gone"
+        android:visibility="visible"
         app:backgroundTint="@color/primary"
         app:tint="@color/white" />
 
