@@ -74,4 +74,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Google Maps
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
+
+    // Permissions
+    //implementation 'androidx.activity:activity:1.8.2'
 }

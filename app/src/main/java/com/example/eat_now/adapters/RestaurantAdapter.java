@@ -62,7 +62,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         holder.deliveryTime.setText(restaurant.getDeliveryTimeMinutes() + " min");
 
         // Set delivery fee
-        holder.deliveryFee.setText("$" + String.format("%.0f", restaurant.getDeliveryFee()));
+        holder.deliveryFee.setText("৳" + String.format("%.0f", restaurant.getDeliveryFee()));
 
         // Set rating
         holder.ratingText.setText(String.format("%.1f", restaurant.getRating()));

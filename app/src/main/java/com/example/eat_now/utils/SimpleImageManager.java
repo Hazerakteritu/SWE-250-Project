@@ -6,10 +6,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * SUPER SIMPLE - Fixed images for restaurants and food
- * No complex upload needed!
- */
 public class SimpleImageManager {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -23,10 +19,10 @@ public class SimpleImageManager {
 
         // Fixed image URLs for each restaurant
         Map<String, String> restaurantImages = new HashMap<>();
-        restaurantImages.put("restaurant1", "https://images.unsplash.com/photo-1563379091339-03246963d51a?w=400"); // Kacchi Bhai - Biryani
-        restaurantImages.put("restaurant2", "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400"); // Tasty Treat - Burger
-        restaurantImages.put("restaurant3", "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"); // 5 Bhai - Fish Curry
-        restaurantImages.put("restaurant4", "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400"); // Panshi - Traditional
+        restaurantImages.put("restaurant1", "https://scontent.fdac138-1.fna.fbcdn.net/v/t39.30808-6/464619126_4248163125410501_2020016519552104049_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=8iR7XzWcRJ8Q7kNvwHNcclE&_nc_oc=AdnDvTxEIckt0qwMT-FS_pWMeMC1ESYA-ph0E0hBRHKm5dAeNLxpNk3k3RKQ9l-SK9Y&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=8VwebIZcsLDDUi1-JR2_9A&oh=00_AfMqt3Jfb66IkR-HKEYsOw0YnkucjoOoOpV_8VgeRjWKVg&oe=685A136B"); // Kacchi Bhai - Biryani
+        restaurantImages.put("restaurant2", "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400"); // Tasty Treat
+        restaurantImages.put("restaurant3", "https://images.deliveryhero.io/image/fd-bd/Products/879397.jpg??width=600"); // 5 Bhai
+        restaurantImages.put("restaurant4", "https://images.deliveryhero.io/image/fd-bd/Products/4450186.jpg??width=600"); // Panshi
         restaurantImages.put("restaurant5", "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400"); // Pizza Hub - Pizza
         restaurantImages.put("restaurant6", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400"); // Bonoful - Sweets
 
@@ -36,13 +32,13 @@ public class SimpleImageManager {
             String imageUrl = entry.getValue();
 
             db.collection("restaurants").document(restaurantId)
-                    .update("imageUrl", imageUrl)
-                    .addOnSuccessListener(aVoid -> {
-                        // Success - no need to show message for each
-                    })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(context, "❌ Failed to update " + restaurantId, Toast.LENGTH_SHORT).show();
-                    });
+                .update("imageUrl", imageUrl)
+                .addOnSuccessListener(aVoid -> {
+                    // Success - no need to show message for each
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(context, "❌ Failed to update " + restaurantId, Toast.LENGTH_SHORT).show();
+                });
         }
 
         Toast.makeText(context, "✅ All restaurant images set!", Toast.LENGTH_LONG).show();
@@ -59,11 +55,11 @@ public class SimpleImageManager {
         Map<String, String> foodImages = new HashMap<>();
 
         // Restaurant 1 - Kacchi Bhai foods
-        foodImages.put("food1_restaurant1", "https://images.unsplash.com/photo-1563379091339-03246963d51a?w=300"); // Kacchi Biryani
-        foodImages.put("food2_restaurant1", "https://images.unsplash.com/photo-1574484284002-952d92456975?w=300"); // Beef Rezala
-        foodImages.put("food3_restaurant1", "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300"); // Chicken Roast
-        foodImages.put("food4_restaurant1", "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300"); // Borhani
-        foodImages.put("food5_restaurant1", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300"); // Firni
+        foodImages.put("food1_restaurant1", "https://images.deliveryhero.io/image/fd-bd/Products/2046151.jpg??width=600"); // Kacchi Biryani
+        foodImages.put("food2_restaurant1", "https://images.deliveryhero.io/image/fd-bd/Products/8091169.jpg??width=600");
+        foodImages.put("food3_restaurant1", "https://images.deliveryhero.io/image/fd-bd/Products/2046170.jpg??width=600"); // Chicken Roast
+        foodImages.put("food4_restaurant1", "https://images.deliveryhero.io/image/fd-bd/Products/2046177.jpg??width=600"); // Borhani
+        foodImages.put("food5_restaurant1", "https://images.deliveryhero.io/image/fd-bd/Products/2046175.jpg??width=600"); // Firni
 
         // Restaurant 2 - Tasty Treat foods
         foodImages.put("food1_restaurant2", "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=300"); // Chicken Burger
@@ -73,32 +69,32 @@ public class SimpleImageManager {
         foodImages.put("food5_restaurant2", "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=300"); // Chocolate Shake
 
         // Restaurant 3 - 5 Bhai foods
-        foodImages.put("food1_restaurant3", "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300"); // Hilsa Fish Curry
-        foodImages.put("food2_restaurant3", "https://images.unsplash.com/photo-1574484284002-952d92456975?w=300"); // Mutton Curry
-        foodImages.put("food3_restaurant3", "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=300"); // Dal Gosht
-        foodImages.put("food4_restaurant3", "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300"); // Plain Rice
-        foodImages.put("food5_restaurant3", "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300"); // Mixed Vegetables
+        foodImages.put("food1_restaurant3", "https://as1.ftcdn.net/v2/jpg/14/08/69/36/1000_F_1408693633_Vd1IGCM58jqp1UKdM2oh1D15sFN5P33z.jpg");
+        foodImages.put("food2_restaurant3", "https://images.deliveryhero.io/image/fd-bd/Products/879397.jpg??width=600");
+        foodImages.put("food3_restaurant3", "https://images.deliveryhero.io/image/fd-bd/Products/4049907.jpg??width=600");
+        foodImages.put("food4_restaurant3", "https://images.deliveryhero.io/image/fd-bd/products/4049887.jpg??width=600");
+        foodImages.put("food5_restaurant3", "https://images.deliveryhero.io/image/fd-bd/products/4049910.jpg??width=600");
 
         // Restaurant 4 - Panshi foods
-        foodImages.put("food1_restaurant4", "https://images.unsplash.com/photo-1574484284002-952d92456975?w=300"); // Shatkora Beef
-        foodImages.put("food2_restaurant4", "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300"); // Shutki Bhorta
-        foodImages.put("food3_restaurant4", "https://images.unsplash.com/photo-1574484284002-952d92456975?w=300"); // Duck Curry
-        foodImages.put("food4_restaurant4", "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300"); // Panta Bhat
-        foodImages.put("food5_restaurant4", "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300"); // Seven Color Tea
+        foodImages.put("food1_restaurant4", "https://images.deliveryhero.io/image/fd-bd/products/4450222.jpg??width=600");
+        foodImages.put("food2_restaurant4", "https://images.deliveryhero.io/image/fd-bd/Products/4450186.jpg??width=600"); // Shutki Bhorta
+        foodImages.put("food3_restaurant4", "https://images.deliveryhero.io/image/fd-bd/products/4450193.jpg??width=600");
+        foodImages.put("food4_restaurant4", "https://images.deliveryhero.io/image/fd-bd/Products/4569067.jpg??width=600");
+        foodImages.put("food5_restaurant4", "https://images.deliveryhero.io/image/fd-bd/Products/4450285.jpg??width=600");
 
         // Restaurant 5 - Pizza Hub foods
         foodImages.put("food1_restaurant5", "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300"); // Margherita Pizza
-        foodImages.put("food2_restaurant5", "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=300"); // Chicken Supreme
+        foodImages.put("food2_restaurant5", "https://images.deliveryhero.io/image/fd-bd/products/%20pizza%20express%20/907130.jpg?width=%s"); // Chicken Supreme
         foodImages.put("food3_restaurant5", "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=300"); // Beef Pepperoni
-        foodImages.put("food4_restaurant5", "https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=300"); // Garlic Bread
-        foodImages.put("food5_restaurant5", "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=300"); // Pasta Alfredo
+        foodImages.put("food4_restaurant5", "https://images.deliveryhero.io/image/fd-bd/products/5834313.jpg??width=600"); // Garlic Bread
+        foodImages.put("food5_restaurant5", "https://images.deliveryhero.io/image/fd-bd/products/%20pizza%20express%20/907146.jpg?width=%s"); // Pasta Alfredo
 
-        // Restaurant 6 - Bonoful Sweets foods
-        foodImages.put("food1_restaurant6", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300"); // Rasgulla
-        foodImages.put("food2_restaurant6", "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=300"); // Sandesh
-        foodImages.put("food3_restaurant6", "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300"); // Mishti Doi
-        foodImages.put("food4_restaurant6", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300"); // Chomchom
-        foodImages.put("food5_restaurant6", "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=300"); // Kalojam
+        // Restaurant 6 - Fuchka tong
+        foodImages.put("food1_restaurant6", "https://images.deliveryhero.io/image/fd-bd/products/5655700.jpg??width=600"); // Rasgulla
+        foodImages.put("food2_restaurant6", "https://images.deliveryhero.io/image/fd-bd/products/5655705.jpg??width=600"); // Sandesh
+        foodImages.put("food3_restaurant6", "https://images.deliveryhero.io/image/fd-bd/Products/6031862.jpg??width=600"); // Mishti Doi
+        foodImages.put("food4_restaurant6", "https://images.deliveryhero.io/image/fd-bd/Products/6031867.jpg??width=600"); // Chomchom
+        foodImages.put("food5_restaurant6", "https://images.deliveryhero.io/image/fd-bd/products/7206786.jpg??width=600"); // Kalojam
 
         // Update each food item with its image
         for (Map.Entry<String, String> entry : foodImages.entrySet()) {
@@ -106,13 +102,13 @@ public class SimpleImageManager {
             String imageUrl = entry.getValue();
 
             db.collection("food_items").document(foodId)
-                    .update("imageUrl", imageUrl)
-                    .addOnSuccessListener(aVoid -> {
-                        // Success - no need to show message for each
-                    })
-                    .addOnFailureListener(e -> {
-                        // Ignore individual failures
-                    });
+                .update("imageUrl", imageUrl)
+                .addOnSuccessListener(aVoid -> {
+                    // Success - no need to show message for each
+                })
+                .addOnFailureListener(e -> {
+                    // Ignore individual failures
+                });
         }
 
         Toast.makeText(context, "✅ All food images set!", Toast.LENGTH_LONG).show();
