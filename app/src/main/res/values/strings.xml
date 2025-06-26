@@ -35,4 +35,10 @@
     <string name="modina_market_sylhet">Modina Market, Sylhet</string>
     <string name="grab_click_and_yumm">Grab, Click and Yumm</string>
     <string name="view_profile">View Profile</string>
+    <!-- Accessibility strings -->
+    <string name="map_description">Interactive map showing your location and nearby restaurants</string>
+    <string name="current_location_button">Center map on current location</string>
+    <string name="address_card_description">Current address information</string>
+    <string name="restaurant_marker">Restaurant location</string>
+    <string name="current_location_marker">Your current location</string>
 </resources>

@@ -80,5 +80,5 @@ dependencies {
     implementation(libs.play.services.location)
 
     // Permissions
-    //implementation 'androidx.activity:activity:1.8.2'
+    implementation(libs.activity)
 }
