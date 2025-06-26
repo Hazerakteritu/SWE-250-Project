@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.example.eat_now.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public class ViewProfileFragment extends Fragment {
         // Load user data
         loadUserData();
 
-        // Set up save changes button
+        // Save button click
         saveChangesButton.setOnClickListener(v -> saveUserData());
 
         return root;
@@ -56,25 +55,19 @@ public class ViewProfileFragment extends Fragment {
     private void loadUserData() {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
-            // Set email from Firebase Auth
             emailEditText.setText(user.getEmail());
-            emailEditText.setEnabled(false); // Email cannot be changed
+            emailEditText.setEnabled(false);
 
-            // Get additional user data from Firestore
-            DocumentReference userRef = db.collection("users").document(user.getUid());
-            userRef.get().addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.exists()) {
-                    String firstName = documentSnapshot.getString("firstName");
-                    String lastName = documentSnapshot.getString("lastName");
-                    String phone = documentSnapshot.getString("phone");
-                    String address = documentSnapshot.getString("address");
-
-                    if (firstName != null) firstNameEditText.setText(firstName);
-                    if (lastName != null) lastNameEditText.setText(lastName);
-                    if (phone != null) phoneEditText.setText(phone);
-                    if (address != null) addressEditText.setText(address);
-                }
-            });
+            db.collection("users").document(user.getUid())
+                    .get()
+                    .addOnSuccessListener(doc -> {
+                        if (doc.exists()) {
+                            firstNameEditText.setText(doc.getString("firstName"));
+                            lastNameEditText.setText(doc.getString("lastName"));
+                            phoneEditText.setText(doc.getString("phone"));
+                            addressEditText.setText(doc.getString("address"));
+                        }
+                    });
         }
     }
 
@@ -86,34 +79,23 @@ public class ViewProfileFragment extends Fragment {
             String phone = phoneEditText.getText().toString().trim();
             String address = addressEditText.getText().toString().trim();
 
-            // Validate inputs
-            if (firstName.isEmpty()) {
-                firstNameEditText.setError("First name is required");
-                firstNameEditText.requestFocus();
+            if (firstName.isEmpty() || lastName.isEmpty()) {
+                Toast.makeText(getActivity(), "Name fields are required", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if (lastName.isEmpty()) {
-                lastNameEditText.setError("Last name is required");
-                lastNameEditText.requestFocus();
-                return;
-            }
-
-            // Create user data map
             Map<String, Object> userData = new HashMap<>();
             userData.put("firstName", firstName);
             userData.put("lastName", lastName);
             userData.put("phone", phone);
             userData.put("address", address);
 
-            // Update user data in Firestore
-            DocumentReference userRef = db.collection("users").document(user.getUid());
-            userRef.set(userData)
+            db.collection("users").document(user.getUid())
+                    .set(userData)
                     .addOnSuccessListener(aVoid ->
-                            Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show())
+                            Toast.makeText(getActivity(), "Profile updated", Toast.LENGTH_SHORT).show())
                     .addOnFailureListener(e ->
-                            Toast.makeText(getActivity(), "Failed to update profile: " + e.getMessage(),
-                                    Toast.LENGTH_SHORT).show());
+                            Toast.makeText(getActivity(), "Update failed", Toast.LENGTH_SHORT).show());
         }
     }
 }

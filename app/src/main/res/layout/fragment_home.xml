@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Order food from your favorite restaurants around Shahjalal University"
+                android:text="Enjoy meals from your favorite restaurants around your University Campus."
                 android:textSize="14sp"
                 android:textColor="@color/grey_600"
                 android:layout_marginTop="4dp"/>
@@ -41,7 +41,7 @@
                 android:id="@+id/location_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Shahjalal University, Sylhet"
+                android:text="University Ave, SUST, Sylhet"
                 android:drawableStart="@drawable/ic_location"
                 android:drawablePadding="8dp"
                 android:textSize="16sp"

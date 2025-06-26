@@ -45,7 +45,7 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
 
         holder.foodName.setText(foodItem.getName());
         holder.foodDescription.setText(foodItem.getDescription());
-        holder.foodPrice.setText("$" + String.format("%.2f", foodItem.getPrice()));
+        holder.foodPrice.setText("৳" + String.format("%.0f", foodItem.getPrice()));
 
         // Load image using Glide
         Glide.with(context)

@@ -12,10 +12,12 @@
             android:id="@+id/nav_view_profile"
             android:icon="@drawable/man"
             android:title="@string/view_profile" />
+        <!--
         <item
             android:id="@+id/nav_favourite"
             android:icon="@drawable/baseline_favorite_24"
             android:title="@string/favourite" />
+-->
         <item
             android:id="@+id/nav_my_cart"
             android:icon="@drawable/baseline_shopping_cart_24"

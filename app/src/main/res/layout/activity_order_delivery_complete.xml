@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <!-- Success Message -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎉✅ Order Delivered!"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"
+        android:layout_marginBottom="16dp"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your delicious food has arrived!"
+        android:textSize="18sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="8dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/order_id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order #12345"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Order Details Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📦 Delivery Information"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/restaurant_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏪 Restaurant Name"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/delivery_address_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 Your Address"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/total_amount_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💰 Total: ৳390.00"
+                android:textSize="16sp"
+                android:textColor="#4CAF50"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Action Buttons - Simple Material Design -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_receive_order"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="✅ Receive Order"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="#4CAF50"
+            app:cornerRadius="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_go_home"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🏠 Go Home"
+            android:textSize="18sp"
+            android:textColor="#4CAF50"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="#4CAF50"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

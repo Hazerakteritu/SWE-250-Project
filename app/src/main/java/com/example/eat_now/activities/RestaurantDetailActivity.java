@@ -108,7 +108,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                     collapsingToolbar.setTitle(restaurant.getName());
                     restaurantAddress.setText(restaurant.getAddress());
                     deliveryTime.setText(restaurant.getDeliveryTimeMinutes() + " min");
-                    deliveryFee.setText("৳" + String.format("%.2f", restaurant.getDeliveryFee()));
+                    deliveryFee.setText("৳" + String.format("%.0f", restaurant.getDeliveryFee())); // Updated line
                     restaurantDescription.setText(restaurant.getDescription());
                     ratingBar.setRating((float) restaurant.getRating());
 

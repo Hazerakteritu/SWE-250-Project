@@ -15,6 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import android.content.Intent;
+
 
 /**
  * FIXED Order Tracking - Matches your XML file!
@@ -246,13 +248,15 @@ public class OrderTrackingActivity extends AppCompatActivity {
                     if (progressBar != null) progressBar.setProgress(75);
                     Toast.makeText(this, "🚗 Your order is on the way!", Toast.LENGTH_SHORT).show();
                     break;
-                case 3: // Delivered
+                case 3: // Delivered - NEW: Navigate to delivery complete page
                     if (statusPlaced != null) statusPlaced.setTextColor(0xFF4CAF50);
                     if (statusPreparing != null) statusPreparing.setTextColor(0xFF4CAF50);
                     if (statusOnWay != null) statusOnWay.setTextColor(0xFF4CAF50);
                     if (statusDelivered != null) statusDelivered.setTextColor(0xFF4CAF50);
                     if (progressBar != null) progressBar.setProgress(100);
-                    Toast.makeText(this, "📦 Your order has been delivered!", Toast.LENGTH_LONG).show();
+
+                    // Show delivery complete page
+                    showDeliveryCompletePage();
                     break;
             }
         } catch (Exception e) {
@@ -267,5 +271,15 @@ public class OrderTrackingActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showDeliveryCompletePage() {
+        // Wait 2 seconds then show delivery complete page
+        new android.os.Handler().postDelayed(() -> {
+            Intent intent = new Intent(this, CompleteActivity.class);
+            intent.putExtra("ORDER_ID", orderId);
+            startActivity(intent);
+            finish(); // Close tracking activity
+        }, 2000);
     }
 }

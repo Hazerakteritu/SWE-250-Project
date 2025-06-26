@@ -40,41 +40,35 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Restaurant restaurant = restaurantList.get(position);
 
-        // Load restaurant image using Glide
         Glide.with(context)
                 .load(restaurant.getImageUrl())
                 .placeholder(R.drawable.placeholder_restaurant)
-                .error(R.drawable.error_image)
                 .into(holder.restaurantImage);
 
         holder.restaurantName.setText(restaurant.getName());
 
-        // Set category text
+        // Set categories
         List<String> categories = restaurant.getCategories();
         if (categories != null && !categories.isEmpty()) {
-            String categoryText = String.join(", ", categories);
-            holder.restaurantCategory.setText(categoryText);
+            holder.restaurantCategory.setText(String.join(", ", categories));
         } else {
             holder.restaurantCategory.setText("Restaurant");
         }
 
-        // Set delivery time
         holder.deliveryTime.setText(restaurant.getDeliveryTimeMinutes() + " min");
 
-        // Set delivery fee
+        // Change to Taka currency
         holder.deliveryFee.setText("৳" + String.format("%.0f", restaurant.getDeliveryFee()));
 
-        // Set rating
         holder.ratingText.setText(String.format("%.1f", restaurant.getRating()));
 
-        // Set featured tag visibility
+        // Featured tag for high ratings
         if (restaurant.getRating() >= 4.7) {
             holder.featuredTag.setVisibility(View.VISIBLE);
         } else {
             holder.featuredTag.setVisibility(View.GONE);
         }
 
-        // Set click listener
         holder.restaurantCard.setOnClickListener(v -> {
             Intent intent = new Intent(context, RestaurantDetailActivity.class);
             intent.putExtra("RESTAURANT_ID", restaurant.getId());
@@ -85,11 +79,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     @Override
     public int getItemCount() {
         return restaurantList.size();
-    }
-
-    public void updateList(List<Restaurant> newList) {
-        this.restaurantList = newList;
-        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

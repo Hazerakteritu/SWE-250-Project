@@ -74,6 +74,13 @@
 
         </activity>
 
+        <!-- Add this activity inside the <application> tag -->
+        <activity
+            android:name=".activities.CompleteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EatNow.NoActionBar" />
+
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
