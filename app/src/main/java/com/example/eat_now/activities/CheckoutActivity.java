@@ -101,7 +101,7 @@ public class CheckoutActivity extends AppCompatActivity implements CartAdapter.C
             double total = subtotal + deliveryFee;
 
             restaurantNameText.setText(restaurant.getName());
-            // Changed from $ to ৳ (Taka symbol)
+
             subtotalText.setText(String.format("৳%.2f", subtotal));
             deliveryFeeText.setText(String.format("৳%.2f", deliveryFee));
             totalText.setText(String.format("৳%.2f", total));

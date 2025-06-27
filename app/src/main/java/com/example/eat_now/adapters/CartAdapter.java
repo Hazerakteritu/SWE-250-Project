@@ -48,7 +48,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         CartItem cartItem = cartItems.get(position);
 
         holder.itemName.setText(cartItem.getFoodItem().getName());
-        // Changed from $ to ৳ (Taka symbol)
         holder.itemPrice.setText("৳" + String.format("%.2f", cartItem.getTotalPrice()));
         holder.itemQuantity.setText(String.valueOf(cartItem.getQuantity()));
 

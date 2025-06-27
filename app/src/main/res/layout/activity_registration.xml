@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/imageView3"
+        android:foreground="@drawable/foreground_design"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -55,7 +56,8 @@
         android:drawableStart="@drawable/baseline_account_circle_24"
         android:drawablePadding="13dp"
         android:hint="@string/enter_your_name"
-        android:textColorHint="@color/white"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -70,7 +72,8 @@
         android:drawableStart="@drawable/baseline_email_24"
         android:drawablePadding="13dp"
         android:hint="@string/email_address"
-        android:textColorHint="@color/white"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
@@ -85,12 +88,16 @@
         android:drawableStart="@drawable/baseline_key_24"
         android:drawablePadding="13dp"
         android:hint="@string/password"
-        android:textColorHint="@color/white"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
         app:layout_constraintWidth_percent=".8" />
 
+    <!-- ConstraintLayout-এ যখন width বা height এর জন্য percentage ব্যবহার করি, তখন 0dp দিতে হয়। তারপর layout_constraintWidth_percent দিয়ে সাইজ নির্ধারণ করি। -->
+    <!-- android:padding="14dp"  View-এর ভিতরের সব দিকে (top, bottom, left, right) ১৪dp করে ফাঁকা জায়গা থাকবে, -->
+    <!-- android:layout_marginTop="10dp"  View-এর উপরে ১০dp ফাঁকা জায়গা তৈরি করে, যেন ওপরে থাকা অন্য ভিউর সঙ্গে গায়ে গায়ে না লাগে।-->
     <Button
         android:onClick="mainActivity"
         android:id="@+id/button"
@@ -108,6 +115,9 @@
         app:layout_constraintWidth_percent=".8"
         app:layout_constraintVertical_bias="0.5"
         />
+
+    <!-- app:layout_constraintVertical_bias="0.5" এটা বোঝায় যে View টি উপর ও নিচের মধ্যে ঠিক মাঝখানে থাকবে।
+             মান ০ হলে উপরে, ১ হলে নিচে।  .5 মানে: vertically exact center. -->
 
     <TextView
         android:id="@+id/textView7"

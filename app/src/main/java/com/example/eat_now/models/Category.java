@@ -6,7 +6,7 @@ public class Category {
     private int iconResource;
 
     public Category() {
-        // Required empty constructor for Firestore
+        //for Firestore
     }
 
     public Category(String id, String name, int iconResource) {

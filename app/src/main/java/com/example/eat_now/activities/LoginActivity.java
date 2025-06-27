@@ -40,19 +40,17 @@ public class LoginActivity extends AppCompatActivity {
         forgotPasswordText = findViewById(R.id.forgot_password_text);
         passwordToggle = findViewById(R.id.password_toggle);
 
-        // Set up forgot password click
+        // forgot password click
         forgotPasswordText.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
         });
 
-        // Set up password toggle click
+        // password toggle click
         passwordToggle.setOnClickListener(v -> togglePasswordVisibility());
     }
 
-    /**
-     * Toggle password visibility (show/hide)
-     */
+
     private void togglePasswordVisibility() {
         if (isPasswordVisible) {
             // Hide password

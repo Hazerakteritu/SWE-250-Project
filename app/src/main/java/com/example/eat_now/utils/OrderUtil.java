@@ -17,7 +17,6 @@ public class OrderUtil {
     public static Task<DocumentReference> placeOrder(String restaurantId, List<CartItem> cartItems, double totalAmount) {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // Convert cart items to a format suitable for Firestore
         List<Map<String, Object>> items = cartItems.stream().map(cartItem -> {
             Map<String, Object> item = new HashMap<>();
             item.put("foodItemId", cartItem.getFoodItem().getId());

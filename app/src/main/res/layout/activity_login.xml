@@ -8,6 +8,7 @@
     tools:context=".activities.LoginActivity">
 
     <ImageView
+        android:foreground="@drawable/foreground_design"
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

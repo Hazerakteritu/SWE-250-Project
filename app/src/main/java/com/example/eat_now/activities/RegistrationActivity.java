@@ -36,11 +36,14 @@ public class RegistrationActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.editText2); // Email field
         passwordEditText = findViewById(R.id.editText3); // Password field
 
+        /*
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+         */
     }
 
     public void login(View view) {

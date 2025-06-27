@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        // NEW - Simple image setting
+        //  Simple image setting
         if (id == R.id.action_set_images) {
             new AlertDialog.Builder(this)
                     .setTitle("Set Images")
