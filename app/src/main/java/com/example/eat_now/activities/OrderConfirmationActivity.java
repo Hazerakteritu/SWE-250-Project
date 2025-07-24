@@ -41,7 +41,6 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         // Load order details
         loadOrderDetails();
 
-        // Set up button click listeners
         trackOrderButton.setOnClickListener(v -> {
             Intent intent = new Intent(OrderConfirmationActivity.this, OrderTrackingActivity.class);
             intent.putExtra("ORDER_ID", orderId);

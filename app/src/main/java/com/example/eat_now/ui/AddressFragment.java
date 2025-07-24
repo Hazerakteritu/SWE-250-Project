@@ -44,6 +44,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
     private List<Restaurant> restaurants;
 
     public AddressFragment() {
+        // Required empty public constructor
     }
 
     public static AddressFragment newInstance() {
@@ -54,7 +55,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
-        initializeRestaurants();
+        initializeRestaurants(); // Initialize sample restaurant data
     }
 
     @Override
@@ -62,6 +63,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_address, container, false);
 
+        // Initialize views
         mapView = view.findViewById(R.id.mapView);
         tvCurrentAddress = view.findViewById(R.id.tvCurrentAddress);
         fabCurrentLocation = view.findViewById(R.id.fabCurrentLocation);
@@ -73,7 +75,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
         // Set click listener for current location button
         fabCurrentLocation.setOnClickListener(v -> {
             getCurrentLocation();
-
+            // Accessibility announcement
             announceForAccessibility("Centering map on your current location");
         });
 
@@ -91,6 +93,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
         // Set accessibility content description for map
         updateMapAccessibilityDescription("Map loaded with restaurant locations");
 
+        // Check permissions and enable location
         if (checkLocationPermission()) {
             enableMyLocation();
             getCurrentLocation();
@@ -98,6 +101,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
             requestLocationPermission();
         }
 
+        // Add restaurant markers
         addRestaurantMarkers();
     }
 
@@ -135,11 +139,8 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
                         // Get address from coordinates
                         getAddressFromLocation(location.getLatitude(), location.getLongitude());
 
-                        // Accessibility announcement
-                        announceForAccessibility("Map centered on your current location");
                     } else {
                         Toast.makeText(getContext(), "Unable to get current location", Toast.LENGTH_SHORT).show();
-                        announceForAccessibility("Unable to get current location");
                     }
                 })
                 .addOnFailureListener(e -> {
@@ -188,10 +189,12 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void initializeRestaurants() {
+        // Sample restaurant data - replace with your actual data from database/API
         restaurants = new ArrayList<>();
         restaurants.add(new Restaurant("Pizza Palace", "123 Main St", 23.7808, 90.4142));
         restaurants.add(new Restaurant("Burger King", "456 Oak Ave", 23.7858, 90.4192));
         restaurants.add(new Restaurant("Sushi House", "789 Pine Rd", 23.7758, 90.4092));
+        // Add more restaurants as needed
     }
 
     private void announceForAccessibility(String message) {
@@ -221,7 +224,7 @@ public class AddressFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-
+    // MapView lifecycle methods
     @Override
     public void onResume() {
         super.onResume();

@@ -57,7 +57,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
         holder.deliveryTime.setText(restaurant.getDeliveryTimeMinutes() + " min");
 
-        // Change to Taka currency
         holder.deliveryFee.setText("৳" + String.format("%.0f", restaurant.getDeliveryFee()));
 
         holder.ratingText.setText(String.format("%.1f", restaurant.getRating()));

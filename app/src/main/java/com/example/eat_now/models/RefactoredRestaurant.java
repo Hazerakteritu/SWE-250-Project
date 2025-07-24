@@ -2,7 +2,7 @@ package com.example.eat_now.models;
 
 import java.util.List;
 
-public class Restaurant {
+public class RefactoredRestaurant {
     private String id;
     private String name;
     private String imageUrl;
@@ -16,11 +16,11 @@ public class Restaurant {
     private List<String> categories;
     private boolean isOpen;
 
-    public Restaurant() {
+    public RefactoredRestaurant() {
     }
 
     // Constructor to create a restaurant object
-    public Restaurant(String id, String name, String imageUrl, String address, String description,
+    public RefactoredRestaurant(String id, String name, String imageUrl, String address, String description,
                       double rating, int deliveryTimeMinutes, double deliveryFee,
                       double latitude, double longitude, List<String> categories, boolean isOpen) {
         this.id = id;

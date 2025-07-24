@@ -18,9 +18,6 @@ import java.util.Locale;
 import android.content.Intent;
 
 
-/**
- * FIXED Order Tracking - Matches your XML file!
- */
 public class OrderTrackingActivity extends AppCompatActivity {
 
     private TextView orderIdText, orderDateText;
@@ -38,13 +35,10 @@ public class OrderTrackingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         try {
-            // FIXED: Use your actual XML file name
             setContentView(R.layout.activity_order_tracking);
 
-            // Initialize Firebase
             db = FirebaseFirestore.getInstance();
 
-            // Get order ID
             orderId = getIntent().getStringExtra("ORDER_ID");
             if (orderId == null) {
                 orderId = "ORD" + System.currentTimeMillis();
@@ -63,8 +57,8 @@ public class OrderTrackingActivity extends AppCompatActivity {
     }
 
     private void setupToolbar() {
-        try {
-            Toolbar toolbar = findViewById(R.id.toolbar);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
             if (toolbar != null) {
                 setSupportActionBar(toolbar);
                 if (getSupportActionBar() != null) {
@@ -72,9 +66,7 @@ public class OrderTrackingActivity extends AppCompatActivity {
                     getSupportActionBar().setDisplayShowTitleEnabled(false);
                 }
             }
-        } catch (Exception e) {
-            // Ignore
-        }
+
     }
 
     private void initializeViews() {
@@ -86,7 +78,7 @@ public class OrderTrackingActivity extends AppCompatActivity {
         statusDelivered = findViewById(R.id.status_delivered);
         progressBar = findViewById(R.id.order_progress_bar);
 
-        // FIXED: Added the missing TextViews from your XML
+
         totalText = findViewById(R.id.total);
         subtotalText = findViewById(R.id.subtotal);
         deliveryFeeText = findViewById(R.id.delivery_fee);
@@ -98,22 +90,18 @@ public class OrderTrackingActivity extends AppCompatActivity {
         restaurantNameText = findViewById(R.id.restaurant_name);
     }
 
-    /**
-     * Load REAL order details from Firebase - FIXED!
-     */
+
     private void loadRealOrderDetails() {
         try {
-            // Set order ID first
             if (orderIdText != null) {
                 orderIdText.setText("Order #" + orderId);
             }
 
-            // Get REAL order data from Firebase
             db.collection("orders").document(orderId)
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
-                            // Get REAL data from your CheckoutActivity
+                            // Get REAL data from  CheckoutActivity
                             String realAddress = documentSnapshot.getString("deliveryAddress");
                             String realPhone = documentSnapshot.getString("phone");
                             String paymentMethod = documentSnapshot.getString("paymentMethod");
@@ -121,7 +109,6 @@ public class OrderTrackingActivity extends AppCompatActivity {
                             Double totalAmount = documentSnapshot.getDouble("totalAmount");
                             Date createdAt = documentSnapshot.getDate("createdAt");
 
-                            // Show REAL information
                             if (realAddress != null && deliveryAddressText != null) {
                                 deliveryAddressText.setText("📍 " + realAddress);
                             }
@@ -135,10 +122,10 @@ public class OrderTrackingActivity extends AppCompatActivity {
                                 restaurantNameText.setText("🏪 " + restaurantName);
                             }
 
-                            // FIXED: Handle all three amounts properly
+
                             if (totalAmount != null) {
-                                // Smart breakdown calculation
-                                double deliveryFee = 50.0; // You can get this from restaurant data
+
+                                double deliveryFee = 50.0; // get this from restaurant data
                                 double subtotal = totalAmount - deliveryFee;
 
                                 // Update all three amounts
@@ -177,9 +164,7 @@ public class OrderTrackingActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * FIXED: Fallback values for all TextViews
-     */
+    //jodi amr load hote problem hoy tahole default value use korbo
     private void loadDefaultValues() {
         try {
             if (orderDateText != null) {
@@ -208,19 +193,16 @@ public class OrderTrackingActivity extends AppCompatActivity {
                 orderedTimeText.setText("🕐 Ordered: " + currentTime);
             }
         } catch (Exception e) {
-            // Ignore
+
         }
     }
 
     private void simulateOrderProgress() {
-        try {
             // Update every 5 seconds
             new android.os.Handler().postDelayed(() -> updateStatus(1), 5000);  // Preparing
             new android.os.Handler().postDelayed(() -> updateStatus(2), 10000); // On Way
             new android.os.Handler().postDelayed(() -> updateStatus(3), 15000); // Delivered
-        } catch (Exception e) {
-            // Ignore
-        }
+
     }
 
     private void updateStatus(int status) {
@@ -255,12 +237,11 @@ public class OrderTrackingActivity extends AppCompatActivity {
                     if (statusDelivered != null) statusDelivered.setTextColor(0xFF4CAF50);
                     if (progressBar != null) progressBar.setProgress(100);
 
-                    // Show delivery complete page
                     showDeliveryCompletePage();
                     break;
             }
         } catch (Exception e) {
-            // Ignore
+
         }
     }
 

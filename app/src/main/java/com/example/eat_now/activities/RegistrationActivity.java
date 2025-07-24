@@ -65,6 +65,11 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
+        if(!isValid(password)){
+            Toast.makeText(this, "Please give UnderScore and any Spacial Character", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Register the user with Firebase
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
@@ -84,4 +89,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
     }
 
+    public boolean isValid(String password){
+
+        if(password.length()< 6) return false;
+
+        boolean hasUnderScore = false;
+        boolean spacialChar = false;
+
+        for(char c: password.toCharArray()){
+            if(c == '_') hasUnderScore = true;
+            if(c == '@' || c == '#' || c == '*') spacialChar = true;
+        }
+        return hasUnderScore && spacialChar;
+    }
+
 }
+

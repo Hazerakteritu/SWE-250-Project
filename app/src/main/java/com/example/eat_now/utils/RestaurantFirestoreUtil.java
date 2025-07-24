@@ -14,21 +14,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+//This RestaurantFirestoreUtil class is a Large Class
+//It's handling too many responsibilities:
+
+// 1. Fetching restaurants and food items
+// 2. Adding sample data
+// 3. Clearing sample data
+// 4. Creating sample models
+// 5. Updating restaurant images
+
 public class RestaurantFirestoreUtil {
     private static final String TAG = "RestaurantFirestoreUtil";
 
-    // Get all restaurants - LIMIT TO 6
     public static Task<QuerySnapshot> getAllRestaurants() {
         return FirestoreUtil.getRestaurantsCollection()
-                .limit(6)  // Limit to 6 restaurants
                 .get();
     }
 
-    // Get popular restaurants - LIMIT TO 6
     public static Task<QuerySnapshot> getPopularRestaurants() {
         return FirestoreUtil.getRestaurantsCollection()
                 .whereGreaterThanOrEqualTo("rating", 4.5)
-                .limit(6)  // Limit to 6 restaurants
                 .get();
     }
 
@@ -41,7 +47,7 @@ public class RestaurantFirestoreUtil {
         return FirestoreUtil.getRestaurantDocument(restaurantId).get();
     }
 
-    // Get food items by restaurant - LIMIT TO 5
+    // Get food items by restaurant
     public static Task<QuerySnapshot> getFoodItemsByRestaurant(String restaurantId) {
         if (restaurantId == null || restaurantId.isEmpty()) {
             Log.e(TAG, "getFoodItemsByRestaurant: restaurantId is null or empty");
@@ -49,16 +55,14 @@ public class RestaurantFirestoreUtil {
         }
         return FirestoreUtil.getFoodItemsCollection()
                 .whereEqualTo("restaurantId", restaurantId)
-                .limit(5)  // Limit to 5 food items per restaurant
+                .limit(5)
                 .get();
     }
 
-    // Add sample data - 6 UNIQUE Sylhet restaurants with 5 food items each
     public static void addSampleData(Context context) {
         // First clear existing data
         clearExistingData(context, () -> {
             try {
-                // Add sample restaurants - EXACTLY 6 UNIQUE SYLHET RESTAURANTS
                 List<Restaurant> restaurants = createSampleRestaurants();
 
                 for (Restaurant restaurant : restaurants) {
@@ -126,7 +130,7 @@ public class RestaurantFirestoreUtil {
                                     if (context != null) {
                                         Toast.makeText(context, "Error clearing food items: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
-                                    // Still run the completion callback
+
                                     if (onComplete != null) {
                                         onComplete.run();
                                     }
@@ -154,7 +158,6 @@ public class RestaurantFirestoreUtil {
         }
     }
 
-    // Create sample restaurants - EXACTLY 6 UNIQUE SYLHET RESTAURANTS
     private static List<Restaurant> createSampleRestaurants() {
         List<Restaurant> restaurants = new ArrayList<>();
 
@@ -263,13 +266,12 @@ public class RestaurantFirestoreUtil {
         return restaurants;
     }
 
-    // Create sample food items - 5 FOOD ITEMS PER RESTAURANT
+    // Create sample food items
     private static List<FoodItem> createSampleFoodItems(String restaurantId) {
         List<FoodItem> foodItems = new ArrayList<>();
 
-        // Different food items based on restaurant type
         if (restaurantId.equals("restaurant1")) {
-            // Kacchi Bhai Ambarkhana - Traditional Bangladeshi
+            // Kacchi Bhai Ambarkhana
             foodItems.add(new FoodItem("food1_" + restaurantId, "Kacchi Biryani", "Authentic Sylheti kacchi biryani with tender mutton", "", 15.99, restaurantId, "Main Course"));
             foodItems.add(new FoodItem("food2_" + restaurantId, "Beef Rezala", "Traditional beef curry with rich gravy", "", 12.99, restaurantId, "Main Course"));
             foodItems.add(new FoodItem("food3_" + restaurantId, "Chicken Roast", "Spicy roasted chicken Sylheti style", "", 10.99, restaurantId, "Main Course"));
@@ -277,7 +279,7 @@ public class RestaurantFirestoreUtil {
             foodItems.add(new FoodItem("food5_" + restaurantId, "Firni", "Creamy rice pudding dessert", "", 4.99, restaurantId, "Dessert"));
         }
         else if (restaurantId.equals("restaurant2")) {
-            // Tasty Treat Sylhet - Fast Food
+            // Tasty Treat Sylhet
             foodItems.add(new FoodItem("food1_" + restaurantId, "Chicken Burger", "Crispy chicken burger with special sauce", "", 8.99, restaurantId, "Burger"));
             foodItems.add(new FoodItem("food2_" + restaurantId, "Beef Burger", "Juicy beef patty with fresh vegetables", "", 9.99, restaurantId, "Burger"));
             foodItems.add(new FoodItem("food3_" + restaurantId, "Chicken Wings", "Spicy buffalo chicken wings", "", 7.99, restaurantId, "Snacks"));
@@ -285,7 +287,7 @@ public class RestaurantFirestoreUtil {
             foodItems.add(new FoodItem("food5_" + restaurantId, "Chocolate Shake", "Rich chocolate milkshake", "", 4.99, restaurantId, "Beverage"));
         }
         else if (restaurantId.equals("restaurant3")) {
-            // 5 Bhai Restaurant - Traditional Bangladeshi
+            // 5 Bhai Restaurant
             foodItems.add(new FoodItem("food1_" + restaurantId, "Hilsa Fish Curry", "Fresh hilsa fish in traditional curry", "", 14.99, restaurantId, "Main Course"));
             foodItems.add(new FoodItem("food2_" + restaurantId, "Mutton Curry", "Tender mutton in spicy gravy", "", 13.99, restaurantId, "Main Course"));
             foodItems.add(new FoodItem("food3_" + restaurantId, "Dal Gosht", "Lentils cooked with meat", "", 11.99, restaurantId, "Main Course"));
@@ -328,12 +330,7 @@ public class RestaurantFirestoreUtil {
         return foodItems;
     }
 
-    /**
-     * Update restaurant image URL
-     * @param restaurantId The restaurant ID
-     * @param imageUrl The new image URL from Firebase Storage
-     * @param context Context for showing toast messages
-     */
+
     public static void updateRestaurantImage(String restaurantId, String imageUrl, Context context) {
         if (restaurantId == null || restaurantId.isEmpty()) {
             Log.e(TAG, "updateRestaurantImage: restaurantId is null or empty");

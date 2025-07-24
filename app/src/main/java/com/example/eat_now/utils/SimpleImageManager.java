@@ -10,10 +10,7 @@ public class SimpleImageManager {
 
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    /**
-     * STEP 1: Set fixed images for all restaurants
-     * Just call this once and all restaurants get images!
-     */
+
     public static void setAllRestaurantImages(Context context) {
         Toast.makeText(context, "Setting restaurant images...", Toast.LENGTH_SHORT).show();
 
@@ -26,7 +23,6 @@ public class SimpleImageManager {
         restaurantImages.put("restaurant5", "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400"); // Pizza Hub - Pizza
         restaurantImages.put("restaurant6", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400"); // Bonoful - Sweets
 
-        // Update each restaurant with its image
         for (Map.Entry<String, String> entry : restaurantImages.entrySet()) {
             String restaurantId = entry.getKey();
             String imageUrl = entry.getValue();
@@ -34,7 +30,6 @@ public class SimpleImageManager {
             db.collection("restaurants").document(restaurantId)
                 .update("imageUrl", imageUrl)
                 .addOnSuccessListener(aVoid -> {
-                    // Success - no need to show message for each
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(context, "❌ Failed to update " + restaurantId, Toast.LENGTH_SHORT).show();
@@ -44,10 +39,7 @@ public class SimpleImageManager {
         Toast.makeText(context, "✅ All restaurant images set!", Toast.LENGTH_LONG).show();
     }
 
-    /**
-     * STEP 2: Set fixed images for all food items
-     * Just call this once and all food gets images!
-     */
+
     public static void setAllFoodImages(Context context) {
         Toast.makeText(context, "Setting food images...", Toast.LENGTH_SHORT).show();
 

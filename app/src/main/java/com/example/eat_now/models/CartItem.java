@@ -7,7 +7,6 @@ public class CartItem {
     private String specialInstructions;
     private double totalPrice;
 
-    // Default constructor for Firebase
     public CartItem() {
     }
 

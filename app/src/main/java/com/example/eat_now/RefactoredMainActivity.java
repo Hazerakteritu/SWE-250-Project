@@ -10,7 +10,9 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.example.eat_now.activities.LoginActivity;
 import com.example.eat_now.utils.CartManager;
+import com.example.eat_now.utils.RFSampleDataManager;
 import com.example.eat_now.utils.RestaurantFirestoreUtil;
+import com.example.eat_now.utils.RefactoredRestaurantFirestoreUtil;
 import com.example.eat_now.utils.SimpleImageManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class RefactoredMainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FirebaseAuth mAuth;
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private void logout() {
         mAuth.signOut();
         CartManager.getInstance().clearCart();
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        Intent intent = new Intent(RefactoredMainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -77,14 +79,15 @@ public class MainActivity extends AppCompatActivity {
                     .setTitle("Reset Restaurants")
                     .setMessage("This will add new Sylhet restaurants. Continue?")
                     .setPositiveButton("Yes", (dialog, which) -> {
-                        RestaurantFirestoreUtil.addSampleData(this);
+                        // RefactoredRestaurantFirestoreUtil.addSampleData(this);
+                        RFSampleDataManager.addSampleData(this);
                     })
                     .setNegativeButton("Cancel", null)
                     .show();
             return true;
         }
 
-        // NEW - Simple image setting
+        //  Simple image setting
         if (id == R.id.action_set_images) {
             new AlertDialog.Builder(this)
                     .setTitle("Set Images")

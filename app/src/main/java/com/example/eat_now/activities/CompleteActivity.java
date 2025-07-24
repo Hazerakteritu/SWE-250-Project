@@ -26,7 +26,6 @@ public class CompleteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_delivery_complete);
 
-        // Initialize Firebase
         db = FirebaseFirestore.getInstance();
 
         // Get order ID from intent
@@ -133,5 +132,4 @@ public class CompleteActivity extends AppCompatActivity {
         finish();
     }
 
-    // Remove the old onBackPressed method completely
 }

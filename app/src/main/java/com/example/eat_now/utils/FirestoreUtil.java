@@ -17,7 +17,6 @@ public class FirestoreUtil {
         return getUsersCollection().document(userId);
     }
 
-    // Restaurant collection
     public static CollectionReference getRestaurantsCollection() {
         return db.collection("restaurants");
     }
