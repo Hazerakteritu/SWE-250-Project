@@ -110,53 +110,13 @@ Register / Login
 | Navigation | Android Navigation Component |
 | Authentication | Firebase Authentication |
 | Database | Firebase Firestore |
-| File Storage | Firebase Storage |
 | Notifications | Firebase Cloud Messaging |
-| Analytics | Firebase Analytics |
 | Maps | Google Maps SDK for Android |
-| Location | Google Play Services Location |
 | Image Loading | Glide |
 | Google Sign-In | Android Credential Manager + Google Identity |
 
-The current project configuration targets **Android API 34**, supports devices from **API 24**, and uses **Java 11** compatibility settings.
 
-## Architecture & Project Structure
-
-The repository follows a standard Android application structure:
-
-```text
-SWE-250-Project/
-├── app/
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/ or kotlin/
-│   │       ├── res/
-│   │       │   ├── drawable/
-│   │       │   ├── layout/
-│   │       │   ├── mipmap/
-│   │       │   ├── values/
-│   │       │   └── ...
-│   │       └── AndroidManifest.xml
-│   ├── build.gradle.kts
-│   └── google-services.json
-│
-├── gradle/
-│   └── libs.versions.toml
-│
-├── image/
-│   └── project assets
-├── screenshots/
-│   └── App's screenshots
-│
-├── build.gradle.kts
-├── settings.gradle.kts
-├── gradle.properties
-├── gradlew
-├── gradlew.bat
-└── README.md
 ```
-
-> The exact package-level organization may evolve as the project is developed. The structure above describes the major repository components.
 
 ## Getting Started
 
@@ -297,21 +257,27 @@ The application provides a seamless user experience across all features. Below a
 
 ### Authentication and Account
 
-| Welcome Screen | Login | Registration |
+| Welcome Screen | Registration | Login |
 |---|---|---|
-| ![Welcome](screenshots/01_welcome.jpeg) | ![Login](screenshots/02_login.jpeg) | ![Registration](screenshots/03_registration.jpeg) |
+| ![Welcome](screenshots/01_welcome.jpeg) | ![Registration](screenshots/03_registration.jpeg) | ![Login](screenshots/02_login.jpeg) |
+
+### Password Reset Flow
+
+| Forgot Password Screen | Email Notification | Reset Password Mail |
+|---|---|---|
+| ![Forgot Password](screenshots/04_forgot_password.jpeg) | ![Email Notification](screenshots/04_reset_email_notif.jpeg) | ![Reset Password Mail](screenshots/04_reset_password_mail.jpeg) |
 
 ### Restaurant Discovery and Selection
 
-| Home Screen | Restaurant Details | Menu |
+| Home Screen | Restaurant Lists | Restaurant Details |
 |---|---|---|
 | ![Home](screenshots/05_home.jpeg) | ![Restaurant Details](screenshots/07_restaurant_details.jpeg) | ![Menu](screenshots/08_menu.jpeg) |
 
 ### Shopping and Checkout
 
-| Cart Summary | Add to Cart | Order Placed |
+| Add to Cart | Cart Summary | Order Placed |
 |---|---|---|
-| ![Cart Summary](screenshots/11_cart_summary.jpeg) | ![Add to Cart](screenshots/12_add_to_cart.jpeg) | ![Order Placed](screenshots/17_order_placed.jpeg) |
+| ![Add to Cart](screenshots/12_add_to_cart.jpeg) | ![Cart Summary](screenshots/11_cart_summary.jpeg)| ![Order Placed](screenshots/17_order_placed.jpeg) |
 
 ### Order Tracking and Delivery
 
@@ -321,9 +287,10 @@ The application provides a seamless user experience across all features. Below a
 
 ### User Account
 
-| User Profile | Navigation Menu | Location Map |
-|---|---|---|
-| ![User Profile](screenshots/23_view_profile.jpeg) | ![Navigation](screenshots/25_navigation_drawer.jpeg) | ![Location Map](screenshots/27_location_map.jpeg) |
+| User Profile | Location Map |
+|---|---|
+| ![User Profile](screenshots/23_view_profile.jpeg) | ![Location Map](screenshots/27_location_map.jpeg) |
+
 
 ## Build Configuration
 
