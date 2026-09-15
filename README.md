@@ -83,19 +83,19 @@ Register / Login
                 ▼
              Checkout
                 │
-        ┌───────┴────────┐
-        ▼                ▼
- Delivery Address    Payment Method
-        │                │
-        └───────┬────────┘
-                ▼
-        Order Confirmation
-                │
-                ▼
-          Order Tracking
-                │
-                ▼
-          Order History
+         ┌───────┴────────┐
+         ▼                ▼
+  Delivery Address    Payment Method
+         │                │
+         └───────┬────────┘
+                 ▼
+         Order Confirmation
+                 │
+                 ▼
+           Order Tracking
+                 │
+                 ▼
+           Order History
 ```
 
 ## Technology Stack
@@ -293,80 +293,37 @@ Users can view order progress and access previous orders from the order history 
 
 ## Screenshots
 
-FoodExpress includes comprehensive screenshots showcasing the complete user journey and application features:
+The application provides a seamless user experience across all features. Below are key screenshots illustrating the primary user workflows:
 
-### 🔐 Authentication Screens
+### Authentication and Account
 
-| Login | Registration | Forgot Password |
-|-------|--------------|-----------------|
-| ![Login Screen](screenshots/01_login.png) | ![Registration Screen](screenshots/02_registration.png) | ![Forgot Password](screenshots/03_forgot_password.png) |
-| User login interface with email and password | New user registration form | Password recovery flow |
+| Welcome Screen | Login | Registration |
+|---|---|---|
+| ![Welcome](screenshots/01_welcome.jpeg) | ![Login](screenshots/02_login.jpeg) | ![Registration](screenshots/03_registration.jpeg) |
 
-### 🏠 Home & Discovery
+### Restaurant Discovery and Selection
 
-| Home Screen | Explore Restaurants | Categories |
-|-------------|-------------------|-----------|
-| ![Home Screen](screenshots/04_home.png) | ![Explore Restaurants](screenshots/05_restaurants_list.png) | ![Categories](screenshots/06_categories.png) |
-| Personalized welcome and quick access | Browse available restaurants | Food categories filter |
+| Home Screen | Restaurant Details | Menu |
+|---|---|---|
+| ![Home](screenshots/05_home.jpeg) | ![Restaurant Details](screenshots/07_restaurant_details.jpeg) | ![Menu](screenshots/08_menu.jpeg) |
 
-### 🍽️ Restaurant & Menu
+### Shopping and Checkout
 
-| Restaurant Details | Menu Items | Popular Items |
-|--------------------|-----------|---------------|
-| ![Restaurant Details](screenshots/07_restaurant_details.png) | ![Menu Items](screenshots/08_menu.png) | ![Popular Items](screenshots/09_popular_food.png) |
-| Restaurant info, ratings, and location | Complete menu with food items | Popular and trending foods |
+| Cart Summary | Add to Cart | Order Placed |
+|---|---|---|
+| ![Cart Summary](screenshots/11_cart_summary.jpeg) | ![Add to Cart](screenshots/12_add_to_cart.jpeg) | ![Order Placed](screenshots/17_order_placed.jpeg) |
 
-### 🛒 Cart & Ordering
+### Order Tracking and Delivery
 
-| Shopping Cart | Cart Summary | Add Items |
-|---------------|-------------|-----------|
-| ![Shopping Cart](screenshots/10_cart_screen.png) | ![Cart Summary](screenshots/11_cart_summary.png) | ![Add Items](screenshots/12_add_to_cart.png) |
-| View cart items and quantities | Order summary before checkout | Add food items to cart |
+| Order Tracking | Delivery Progress | Order Delivered |
+|---|---|---|
+| ![Order Tracking](screenshots/18_order_tracking.jpeg) | ![Delivery Progress](screenshots/19_delivery_progress.jpeg) | ![Order Delivered](screenshots/20_order_delivered.jpeg) |
 
-### 📦 Checkout & Payment
+### User Account
 
-| Checkout Screen | Delivery Address | Payment Method |
-|-----------------|------------------|-----------------|
-| ![Checkout](screenshots/13_checkout.png) | ![Delivery Address](screenshots/14_delivery_address.png) | ![Payment](screenshots/15_payment_method.png) |
-| Review order details | Select delivery location | Choose payment option |
-
-### ✅ Order Confirmation & Tracking
-
-| Order Confirmation | Order Placed | Order Tracking |
-|-------------------|--------------|-----------------|
-| ![Confirmation](screenshots/16_order_confirmation.png) | ![Order Placed](screenshots/17_order_placed.png) | ![Tracking](screenshots/18_order_tracking.png) |
-| Order successfully confirmed | Order placement confirmation | Real-time delivery tracking |
-
-### 📍 Delivery & History
-
-| Delivery in Progress | Order Delivered | Order History |
-|----------------------|-----------------|---------------|
-| ![Delivery Progress](screenshots/19_delivery_progress.png) | ![Order Delivered](screenshots/20_order_delivered.png) | ![Order History](screenshots/21_order_history.png) |
-| Live delivery status | Order successfully delivered | Previous orders and reorder |
-
-### 👤 Account & Profile
-
-| User Profile | Profile View | Account Settings |
-|--------------|-------------|-----------------|
-| ![Profile](screenshots/22_user_profile.png) | ![View Profile](screenshots/23_view_profile.png) | ![Settings](screenshots/24_account_settings.png) |
-| User profile information | Full profile details | Account management options |
-
-### 🎯 Additional Features
-
-| Navigation Drawer | Search Feature | Location Map |
-|------------------|-----------------|--------------|
-| ![Navigation Drawer](screenshots/25_navigation_drawer.png) | ![Search](screenshots/26_search_feature.png) | ![Location Map](screenshots/27_location_map.png) |
-| Main navigation menu | Search restaurants/food | Interactive location selector |
-
-### User Interface Gallery
-
-The screenshots directory (`screenshots/`) contains organized visual assets that showcase:
-- Clean and intuitive UI design
-- Seamless navigation flow
-- Real-time order tracking interface
-- Location-based services integration
-- Firebase authentication screens
-- Cart management and checkout flow
+| User Profile | Navigation Menu | Location Map |
+|---|---|---|
+| ![User Profile](screenshots/23_view_profile.jpeg) | ![Navigation](screenshots/25_navigation_drawer.jpeg) | ![Location Map](screenshots/27_location_map.jpeg) |
 
 ## Build Configuration
 
@@ -391,10 +348,8 @@ Version Code:   1
 
 This project was developed as part of an academic software engineering project with an emphasis on requirements, application design, and implementation.
 
----
 
 <p align="center">
   <strong>FoodExpress</strong><br>
-  A complete Android food ordering experience.<br>
-  <em>Order food. Track delivery. Enjoy meals.</em>
+  A complete Android food ordering experience.
 </p>
