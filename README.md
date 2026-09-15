@@ -1,4 +1,4 @@
-# Eat Now
+# FoodExpress
 
 > A modern Android food ordering application that lets users discover restaurants, browse menus, manage a cart, place orders, and track their deliveries.
 
@@ -9,11 +9,11 @@
 
 ## Overview
 
-**Eat Now** is an Android-based food ordering application developed as a Software Engineering project for **SWE 250**.
+**FoodExpress** is an Android-based food ordering application developed as a Software Engineering project for **SWE 250**.
 
-The application provides a complete customer-side ordering flow, starting from account creation and restaurant discovery through menu selection, cart management, checkout, payment selection, order confirmation, and order tracking.
+The application provides a complete customer-side ordering flow, starting from account creation and restaurant discovery through menu selection, cart management, checkout, payment selection, order placement, and delivery tracking.
 
-The project is built as a native Android application and uses Firebase services for authentication, cloud data, storage, messaging, and analytics. Google Maps and location services are integrated to support address selection and location-aware delivery workflows.
+The project is built as a native Android application and uses Firebase services for authentication, cloud data, storage, messaging, and analytics. Google Maps and location services are integrated to enhance the user experience with location-based features.
 
 ## Key Features
 
@@ -145,7 +145,7 @@ SWE-250-Project/
 │
 ├── image/
 │   └── project assets
-├── Screenshots/
+├── screenshots/
 │   └── App's screenshots
 │
 ├── build.gradle.kts
@@ -197,7 +197,7 @@ For a new Firebase environment:
 3. Use the application's package ID:
 
 ```text
-com.example.eat_now
+com.example.foodexpress
 ```
 
 4. Download `google-services.json`.
@@ -293,38 +293,41 @@ Users can view order progress and access previous orders from the order history 
 
 ## Screenshots
 
-The repository contains application screenshots and visual assets in the `screenshots/` directory.
+FoodExpress includes screenshots showcasing various app flows and user interactions:
 
-For a polished GitHub presentation, screenshots can be grouped by flow:
+### Authentication & Welcome
+![Login Screen](screenshots/login.png)
+![Registration Screen](screenshots/registration.png)
 
-- Authentication
-- Home and restaurant discovery
-- Restaurant and menu
-- Cart
-- Checkout
-- Order confirmation
-- Order tracking
-- Profile
+### Home & Discovery
+![Home Screen](screenshots/home.png)
+![Restaurant Discovery](screenshots/restaurants.png)
+![Categories](screenshots/categories.png)
 
-Example Markdown syntax:
+### Restaurant & Menu
+![Restaurant Details](screenshots/restaurant.png)
+![Menu Items](screenshots/menu.png)
 
-```md
-![Home Screen](Screenshots/home.png)
-![Restaurant Details](Screenshots/restaurant.png)
-![Cart](Screenshots/cart.png)
-![Checkout](Screenshots/checkout.png)
-```
+### Cart & Checkout
+![Cart Screen](screenshots/cart.png)
+![Checkout](screenshots/checkout.png)
 
-Rename the corresponding image files to match the paths above if you want to use this gallery directly.
+### Order Management
+![Order Confirmation](screenshots/order.png)
+![Order Tracking](screenshots/tracking.png)
+![Order History](screenshots/history.png)
 
+### Profile & Account
+![User Profile](screenshots/profile.png)
 
+For a polished GitHub presentation, screenshots are organized by application flow and user journey.
 
 ## Build Configuration
 
 Current application configuration:
 
 ```text
-Application ID: com.example.eat_now
+Application ID: com.example.foodexpress
 Compile SDK:    34
 Target SDK:     34
 Minimum SDK:    24
@@ -337,14 +340,14 @@ Version Code:   1
 ## Academic Context
 
 **Course:** SWE 250 — Project Work II  
-**Project:** Eat Now  
+**Project:** FoodExpress  
 **Platform:** Android  
 **Repository:** [Hazerakteritu/SWE-250-Project](https://github.com/Hazerakteritu/SWE-250-Project)
 
-This project was developed as part of an academic software engineering project with an emphasis on requirements, application design, implementation.
+This project was developed as part of an academic software engineering project with an emphasis on requirements, application design, and implementation.
 
 
 <p align="center">
-  <strong>Eat Now</strong><br>
+  <strong>FoodExpress</strong><br>
   A complete Android food ordering experience.
 </p>
