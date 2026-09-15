@@ -285,12 +285,6 @@ The application provides a seamless user experience across all features. Below a
 |---|---|---|
 | ![Order Tracking](screenshots/18_order_tracking.jpeg) | ![Delivery Progress](screenshots/19_delivery_progress.jpeg) | ![Order Delivered](screenshots/20_order_delivered.jpeg) |
 
-### User Account
-
-| User Profile | Location Map |
-|---|---|
-| ![User Profile](screenshots/23_view_profile.jpeg) | ![Location Map](screenshots/27_location_map.jpeg) |
-
 
 ## Build Configuration
 
