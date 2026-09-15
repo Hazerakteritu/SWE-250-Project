@@ -117,7 +117,6 @@ Register / Login
 | Location | Google Play Services Location |
 | Image Loading | Glide |
 | Google Sign-In | Android Credential Manager + Google Identity |
-| Testing | JUnit, AndroidX Test, Espresso |
 
 The current project configuration targets **Android API 34**, supports devices from **API 24**, and uses **Java 11** compatibility settings.
 
@@ -145,7 +144,9 @@ SWE-250-Project/
 │   └── libs.versions.toml
 │
 ├── image/
-│   └── project assets and screenshots
+│   └── project assets
+├── Screenshots/
+│   └── App's screenshots
 │
 ├── build.gradle.kts
 ├── settings.gradle.kts
@@ -223,7 +224,7 @@ Create a Google Maps API key in Google Cloud Console and enable the required Map
 
 Add the API key according to the project's Android resource/configuration setup.
 
-> **Security note:** Do not commit unrestricted API keys or private credentials to a public repository. Restrict Google Maps API keys by Android application and SHA-1 certificate where possible.
+> **Security note:** Do not commit unrestricted API keys or private credentials to a public repository.
 
 ### 5. Build and Run
 
@@ -292,7 +293,7 @@ Users can view order progress and access previous orders from the order history 
 
 ## Screenshots
 
-The repository contains application screenshots and visual assets in the `image/` directory.
+The repository contains application screenshots and visual assets in the `screenshots/` directory.
 
 For a polished GitHub presentation, screenshots can be grouped by flow:
 
@@ -308,33 +309,15 @@ For a polished GitHub presentation, screenshots can be grouped by flow:
 Example Markdown syntax:
 
 ```md
-![Home Screen](image/home.png)
-![Restaurant Details](image/restaurant.png)
-![Cart](image/cart.png)
-![Checkout](image/checkout.png)
+![Home Screen](Screenshots/home.png)
+![Restaurant Details](Screenshots/restaurant.png)
+![Cart](Screenshots/cart.png)
+![Checkout](Screenshots/checkout.png)
 ```
 
 Rename the corresponding image files to match the paths above if you want to use this gallery directly.
 
-## Testing
 
-The project is configured with:
-
-- **JUnit** for unit testing
-- **AndroidX Test** for Android instrumentation testing
-- **Espresso** for UI testing
-
-Run unit tests with:
-
-```bash
-./gradlew test
-```
-
-Run Android instrumentation tests with:
-
-```bash
-./gradlew connectedAndroidTest
-```
 
 ## Build Configuration
 
@@ -350,46 +333,6 @@ Version:        1.0
 Version Code:   1
 ```
 
-## Development Notes
-
-When extending the application:
-
-- Keep Firebase configuration separate from application logic.
-- Validate user input before writing data to Firebase.
-- Apply appropriate Firestore security rules before production deployment.
-- Restrict Google Maps API keys.
-- Avoid committing passwords, API secrets, service-account credentials, or private keys.
-- Keep UI, data access, and business logic separated where practical.
-- Prefer reusable components for restaurant cards, food items, cart items, and order status views.
-
-## Known Limitations
-
-This repository is primarily an academic software engineering project. Before production deployment, the application would benefit from additional work in areas such as:
-
-- Production-grade Firebase security rules
-- Payment gateway integration and transaction verification
-- More extensive automated testing
-- Error handling and offline-state handling
-- Accessibility improvements
-- Performance profiling
-- Secure release signing and Play Store configuration
-- Production analytics and monitoring
-
-## Future Improvements
-
-Potential future enhancements include:
-
-- Real-time restaurant order status
-- Restaurant-owner/admin dashboard
-- Delivery rider application
-- Live delivery tracking
-- Online payment gateway integration
-- Coupons and promotional campaigns
-- Favorites and personalized recommendations
-- Restaurant search and advanced filtering
-- Reviews and ratings
-- Scheduled delivery
-- Order cancellation and refund workflows
 
 ## Academic Context
 
@@ -398,39 +341,8 @@ Potential future enhancements include:
 **Platform:** Android  
 **Repository:** [Hazerakteritu/SWE-250-Project](https://github.com/Hazerakteritu/SWE-250-Project)
 
-This project was developed as part of an academic software engineering project with an emphasis on requirements, application design, implementation, integration, and testing.
+This project was developed as part of an academic software engineering project with an emphasis on requirements, application design, implementation.
 
-## Contributing
-
-Contributions are welcome for further development of the project.
-
-A typical contribution workflow:
-
-```bash
-git checkout -b feature/your-feature
-git add .
-git commit -m "Add: your feature"
-git push origin feature/your-feature
-```
-
-Then open a Pull Request describing:
-
-- What was changed
-- Why the change was needed
-- How it was tested
-- Any known limitations
-
-## License
-
-No open-source license is currently specified in the repository.
-
-If this project is intended for public distribution, add an appropriate `LICENSE` file and update this section accordingly.
-
-## Contact
-
-For project-related questions or collaboration, please use the repository's GitHub Issues or contact the project maintainers through GitHub.
-
----
 
 <p align="center">
   <strong>Eat Now</strong><br>
